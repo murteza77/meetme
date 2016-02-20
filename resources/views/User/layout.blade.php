@@ -98,7 +98,7 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>n
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
@@ -114,6 +114,7 @@
                     <li>
                         <a href="{!! URL::to('account/logout') !!}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                     </li>
+                   
                 </ul>
                 <!-- /.dropdown-user -->
             </li>
