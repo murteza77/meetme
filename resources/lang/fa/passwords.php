@@ -18,5 +18,26 @@ return [
     'token' => 'This password reset token is invalid.',
     'sent' => 'لینک ریست پسورد را به شما ایمیل کرده ایم',
     'reset' => 'پسورد شما ریست شده است',
+    'system_title' => 'قرار ملاقات ها',
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ];

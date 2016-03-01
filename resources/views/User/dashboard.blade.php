@@ -5,14 +5,16 @@ header("Pragma: no-cache");
 !!}
 @extends('User.layout')
 @section('content')
+
+
+
+
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">
-                        Dashboard
-                    </h1>
+                    
                     <ol class="breadcrumb">
                         <li class="active">
-                            <a style="text-decoration: none" href="{!! URL::to('/') !!}"> Dashboard</a>
+                            <a style="text-decoration: none" href="{!! URL::to('/') !!}">{{ trans('general.dashbord') }}</a>
                         </li>
                     </ol>
                 </div>
@@ -29,13 +31,13 @@ header("Pragma: no-cache");
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">{!! $monthEvent !!}</div>
-                                    <div>Event! This Month</div>
+                                    <div>{{ trans('general.meeting_this_month') }}</div>
                                 </div>
                             </div>
                         </div>
                         <a href="{!! URL::to('user/event') !!}">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">{{ trans('general.view_details') }}</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -51,14 +53,14 @@ header("Pragma: no-cache");
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">{!! $lastMonthEvent !!}</div>
-                                    <div>Event! Last Month</div>
+                                    <div>{{ trans('general.meeting_last_month') }}</div>
                                 </div>
                             </div>
                         </div>
                         <a href="{!! URL::to('user/event') !!}">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-left"></span>
+                                <span class="pull-right">{{ trans('general.view_details') }}<i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>
@@ -72,13 +74,13 @@ header("Pragma: no-cache");
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">{!! $nextMonthEvent !!}</div>
-                                    <div>Event! Next Month</div>
+                                    <div>{{ trans('general.meeting_next_month') }}</div>
                                 </div>
                             </div>
                         </div>
                         <a href="{!! URL::to('user/event') !!}">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">{{ trans('general.view_details') }}</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -91,7 +93,7 @@ header("Pragma: no-cache");
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> This Month Individual Day Total Event
+                            <i class="fa fa-bar-chart-o fa-fw"></i> {{ trans('general.this_month_individual_day_total_meeting') }}
                         </div>
                         <div class="panel-body">
                             <div id="morris-bar-chart"></div>
@@ -104,7 +106,7 @@ header("Pragma: no-cache");
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Full Year Individual Month Report
+                            <i class="fa fa-bar-chart-o fa-fw"></i> {{ trans('general.full_year_individual_month_report') }}
                         </div>
                         <div class="panel-body">
                             <div id="piechart" style="width: 100%;height: 400px;font-size: 11px;"></div>
@@ -133,8 +135,8 @@ header("Pragma: no-cache");
                 ]);
 
                 var options = {
-                    title: 'Full Year Individual Month Report'
-                };
+                    title: "{{trans('general.full_year_individual_month_report')}}"
+                }
 
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 

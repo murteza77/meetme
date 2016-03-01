@@ -101,7 +101,7 @@ class AccountController extends Controller
                 Mail::send('eventMail', array('mailProfile' => $eventInfo), function ($message) use ($mailProfile) {
                     $message
                         ->to($mailProfile->email, $mailProfile->first_name . ' ' . $mailProfile->last_name)
-                        ->subject('Kingpabel Scheduler Event' . date('Y-m-d'));
+                        ->subject('MEW Scheduler Meeting' . date('Y-m-d'));
                 });
             }
         }

@@ -114,13 +114,14 @@ class UserController extends Controller
                 $user->last_name = Input::get('last_name');
                 $user->email = Input::get('email');
                 $user->phone = Input::get('phone');
+                $user->lang = Input::get('language');
                 $user->email_status = Input::get('email_status');
                 $user->save();
                 return 'true';
             endif;
         } else {
             $data['menu'] = 'Setting';
-            return view('User.updateInfo', $data);
+            return  view('User.updateInfo', $data);
         }
     }
 
@@ -583,5 +584,9 @@ class UserController extends Controller
         }
     }
 
+
+
+//get lang
+    
 
 }

@@ -1,14 +1,16 @@
 @extends('User.layout')
 @section('content')
+
+
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Event Report
+                {{trans('general.event_report')}}
             </h1>
             <ol class="breadcrumb">
                 <li class="active">
-                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> Dashboard</a> /
-                    <a style="text-decoration: none" href="{!! URL::to('user/table-report') !!}"> Event Report</a>
+                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> {{trans('general.dashbord')}}</a> /
+                    <a style="text-decoration: none" href="{!! URL::to('user/table-report') !!}"> {{trans('general.event_report')}}</a>
                 </li>
             </ol>
         </div>
@@ -18,25 +20,25 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> Event Search</h3>
+                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> {{trans('general.event_search')}}</h3>
                 </div>
                 <div class="panel-body">
                     {!! Form::open(array('id' => 'event', 'accept-charset' => 'utf-8', 'class' => 'form-horizontal', 'method' => 'post', 'url' => 'user/calender-report')) !!}
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Start Time</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">{{trans('general.start_time')}}</label>
                         <div class="col-sm-10">
                             <input type="text" readonly class="form-control from" name="start" required placeholder="Start Time" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">End Time</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">{{trans('general.end_time')}}</label>
                         <div class="col-sm-10">
                             <input type="text" readonly class="form-control to" name="end" required placeholder="End Time" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary">Report</button>
+                            <button type="submit" class="btn btn-primary">{{trans('general.report')}}</button>
                         </div>
                     </div>
                     </form>

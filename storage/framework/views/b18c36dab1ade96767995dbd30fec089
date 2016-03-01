@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 
 <head>
-    <title>Kingpabel Scheduler Create Account</title>
+    <title><?php echo e(trans('general.system_title')); ?></title>
 
     <?php echo HTML::script('js/jquery-2.0.3.min.js'); ?>
 
     <!-- Bootstrap Core CSS -->
     <?php echo HTML::style('css/bootstrap.min.css'); ?>
 
+ <?php echo (isRTL())?
+             HTML::style('css/bootstrap-rtl.min.css') :
+             HTML::style('css/bootstrap.min.css'); ?>
 
     <!-- Custom CSS -->
     <?php echo HTML::style('css/sb-admin-2.css'); ?>
@@ -48,6 +52,9 @@
         ga('send', 'pageview');
 
     </script>
+
+    
+
 </head>
 
 <body>
@@ -68,35 +75,35 @@
                     </div>
                 <?php endif; ?>
                 <div class="panel-heading">
-                    <h3 class="panel-title">Create MEW Scheduler Account</h3>
+                    <h3 class="panel-title"><?php echo trans('general.create_account'); ?></h3>
                 </div>
                 <div class="panel-body">
                     <?php echo Form::open(array('accept-charset' => 'utf-8', 'role' => 'form', 'url' => 'account/create')); ?>
 
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control input" placeholder="First Name" name="first_name" type="text" autofocus required <?php if(Session::has('input.first_name')): ?> value="<?php echo Session::get('input.first_name'); ?>" <?php endif; ?>>
+                            <input class="form-control input" placeholder="<?php echo e(trans('general.first_name')); ?>" name="first_name" type="text" autofocus required <?php if(Session::has('input.first_name')): ?> value="<?php echo Session::get('input.first_name'); ?>" <?php endif; ?>>
                         </div>
                         <div class="form-group">
-                            <input class="form-control input" placeholder="Last Name" name="last_name" type="text" required <?php if(Session::has('input.last_name')): ?> value="<?php echo Session::get('input.last_name'); ?>" <?php endif; ?>>
+                            <input class="form-control input" placeholder="<?php echo e(trans('general.last_name')); ?>" name="last_name" type="text" required <?php if(Session::has('input.last_name')): ?> value="<?php echo Session::get('input.last_name'); ?>" <?php endif; ?>>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="E-mail" name="email" type="email"  required <?php if(Session::has('input.email')): ?> value="<?php echo Session::get('input.email'); ?>" <?php endif; ?>>
+                            <input class="form-control" placeholder="<?php echo e(trans('general.email')); ?>" name="email" type="email"  required <?php if(Session::has('input.email')): ?> value="<?php echo Session::get('input.email'); ?>" <?php endif; ?>>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="password" placeholder="Password" name="password" type="password" required>
+                            <input class="form-control" id="password" placeholder="<?php echo e(trans('general.password')); ?>" name="password" type="password" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="confirm_password" placeholder="Confirm Password" name="confirm_password" type="password" required>
+                            <input class="form-control" id="confirm_password" placeholder="<?php echo e(trans('general.confirm_password')); ?>" name="confirm_password" type="password" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control number" placeholder="Phone Number" name="phone" type="text" required <?php if(Session::has('input.phone')): ?> value="<?php echo Session::get('input.phone'); ?>" <?php endif; ?>>
+                            <input class="form-control number" placeholder="<?php echo e(trans('general.phone')); ?>" name="phone" type="text" required <?php if(Session::has('input.phone')): ?> value="<?php echo Session::get('input.phone'); ?>" <?php endif; ?>>
                         </div>
                         <div class="form-group">
-                            Already Have an Account <a style="text-decoration: none" href="<?php echo URL::to('/'); ?>">Login</a>
+                           <?php echo e(trans('general.already_account')); ?> <a style="text-decoration: none" href="<?php echo URL::to('/'); ?>"><?php echo e(trans('general.login')); ?></a>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-fw fa-plus"></i>Create</button>
+                            <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-fw fa-plus"></i><?php echo e(trans('general.create')); ?></button>
                         </div>
                     </fieldset>
                     </form>

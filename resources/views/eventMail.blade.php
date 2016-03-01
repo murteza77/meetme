@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Kingpabel Scheduler List</title>
+    <title>MEW Scheduler List</title>
 
 <style>/*!
  * Bootstrap v3.3.2 (http://getbootstrap.com)

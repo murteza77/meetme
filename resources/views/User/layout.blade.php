@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
+<head lang="{{ lang() }}" dir="{{ direction() }}">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,16 +9,47 @@
     <meta name="author" content="">
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 
-    <title>Appointment Scheduler System</title>
+    <title>
+
+
+
+    
+    {{ trans('general.App_name') }} </title>
+   
+
     <?php  
  header("Content-Type: text/html;charset=UTF-8");
     ?>
 
+
     {!! HTML::script('js/jquery-2.0.3.min.js') !!}
+
             <!-- Bootstrap Core CSS -->
-    {!! HTML::style('css/bootstrap.min.css') !!}
+        {!! HTML::style('css/bootstrap.min.css') !!}
+        {!! HTML::style('font-awesome/css/font-awesome.min.css') !!}
+
+        {!! (isRTL())?
+             HTML::style('css/bootstrap-rtl.min.css') :
+             HTML::style('css/bootstrap.min.css')
+        !!}
+
+        {!!  (isRTL())?
+        HTML::style('css/custom_fa.css'):
+        HTML::style('css/custom.css')
+
+        !!}
+
+
+        
+   
     {!! HTML::style('css/charisma-app.css') !!}
     {!! HTML::style('css/jquery-ui.css') !!}
+
+
+
+
+
+
     {!! HTML::style('css/custom.css') !!}
 
             <!-- MetisMenu CSS -->
@@ -41,7 +72,7 @@
     {{--{!! HTML::style('css/plugins/morris.css') !!}--}}
 
     <!-- Custom Fonts -->
-    {!! HTML::style('font-awesome/css/font-awesome.min.css') !!}
+    
 
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -102,23 +133,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">MEW Meeting Scheduler</a>
+            <a class="navbar-brand" href="#">{{ trans('passwords.system_title')}}</a>
         </div>
         <!-- /.navbar-header -->
-        <ul class="nav navbar-top-links navbar-right">
+        <ul class="nav navbar-top-links navbar-right" id="username">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-user fa-fw"></i>{!! Auth::user()->first_name !!} <i class="fa fa-caret-down"></i>
                 </a>
-                <ul class="dropdown-menu dropdown-user">
+                <ul class="dropdown-menu dropdown-user" >
                     <li>
-                        <a href="{!! URL::to('account/logout') !!}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        <a href="{!! URL::to('account/logout') !!}"><i class="fa fa-fw fa-power-off"></i> {{ trans('general.logout') }}</a>
                     </li>
                    
                 </ul>
                 <!-- /.dropdown-user -->
             </li>
             <!-- /.dropdown -->
+
+            <!-- /.language -->
+           
         </ul>
 
         <div class="navbar-default sidebar" role="navigation">
@@ -126,30 +160,32 @@
                 <ul class="nav" id="side-menu">
                     <li>
                         <a class="@if($menu == 'Dashboard') active @endif" href="{!! URL::to('user') !!}"><i
-                                    class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                                    class="fa fa-fw fa-dashboard"></i>  {{ trans('general.dashbord') }}</a>
                     </li>
                     <li>
                         <a class="@if($menu == 'Event') active @endif" href="{!! URL::to('user/event') !!}"><i
-                                    class="fa fa-fw fa-th"></i> Event</a>
+                                    class="fa fa-fw fa-th"></i> {{ trans('general.event') }}</a>
                     </li>
                     <li>
                         <a class="@if($menu == 'Create Event') active @endif"
-                           href="{!! URL::to('user/create-event') !!}"><i class="fa fa-fw fa-plus"></i>Create Event</a>
+                           href="{!! URL::to('user/create-event') !!}"><i class="fa fa-fw fa-plus"></i>{{ trans('general.create_event') }}</a>
                     </li>
                     <li>
                         <a class="@if($menu == 'Table') active @endif" href="{!! URL::to('user/table-event') !!}"><i
-                                    class="fa fa-fw fa-table"></i>Table Event</a>
+                                    class="fa fa-fw fa-table"></i> {{ trans('general.event_table') }}</a>
                     </li>
                     <li>
                         <a class="@if($menu == 'Trash') active @endif" href="{!! URL::to('user/event-trash') !!}"><i
-                                    class="fa fa-fw fa-trash-o"></i>Trash</a>
+                                    class="fa fa-fw fa-trash-o"></i> {{ trans('general.trash') }}</a>
                     </li>
+
                     <li>
                         <a class="@if($menu == 'Setting') active @endif" href="#"><i class="fa fa-fw fa-wrench"></i>
-                            Setting<span class="fa arrow"></span></a>
+                          {{ trans('general.setting') }}<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{!! URL::to('user/update-info') !!}">Update Info</a>
+                                <a href="{!! URL::to('user/update-info') !!}">{{ trans('general.update_information') }}</a>
+                             
                             </li>
                             <li>
                                
@@ -159,13 +195,13 @@
                     </li>
                     <li>
                         <a class="@if($menu == 'Report') active @endif" href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
-                            Report<span class="fa arrow"></span></a>
+                              {{ trans('general.report') }} <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{!! URL::to('user/table-report') !!}">Table Report</a>
+                                <a href="{!! URL::to('user/table-report') !!}">  {{ trans('general.table_report') }}</a>
                             </li>
                             <li>
-                                <a href="{!! URL::to('user/calender-report') !!}">Calendar Report</a>
+                                <a href="{!! URL::to('user/calender-report') !!}">  {{ trans('general.calendar_report')}}</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

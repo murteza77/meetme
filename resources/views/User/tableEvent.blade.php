@@ -1,14 +1,14 @@
 @extends('User.layout')
 @section('content')
+
+
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                Event Table
-            </h1>
+          
             <ol class="breadcrumb">
                 <li class="active">
-                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> Dashboard</a> /
-                    <a style="text-decoration: none" href="{!! URL::to('user/table-event') !!}"> Event Table</a>
+                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> {{trans('general.dashbord')}}</a> /
+                    <a style="text-decoration: none" href="{!! URL::to('user/table-event') !!}">{{trans('general.event_table')}}</a>
                 </li>
             </ol>
         </div>
@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-          <a href="{!! URL::to('user/create-event') !!}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> Create Event</a>
+          <a href="{!! URL::to('user/create-event') !!}" class="btn btn-success"><i class="fa fa-fw fa-plus"></i> {{trans('general.create_event')}}</a>
         </div>
     </div>
     <br/>
@@ -25,16 +25,16 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-fw fa-table fa-fw"></i> My Event Table</h3>
+                    <h3 class="panel-title"><i class="fa fa-fw fa-table fa-fw"></i> {{trans('general.my_event_table')}}</h3>
                 </div>
                 <div class="panel-body">
                     <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
-                            <th>Title</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                            <th>Action</th>
+                            <th>{{trans('general.title')}}</th>
+                            <th>{{trans('general.start_time')}}</th>
+                            <th>{{trans('general.end_time')}}</th>
+                            <th>{{trans('general.action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,8 +44,8 @@
                             <td>{!! $event->start_time !!}</td>
                             <td>{!! $event->end_time !!}</td>
                             <td>
-                                <a class="btn btn-danger delete" ng-click="delete({!! $event->id !!})" ><i class="fa fa-fw fa-trash-o"></i>Trash</a>
-                                <a class="btn btn-primary iframe" href='{!! URL::to("user/event-update/$event->id") !!}'><i class="fa fa-fw fa-edit"></i>Edit</a>
+                                <a class="btn btn-danger delete" ng-click="delete({!! $event->id !!})" ><i class="fa fa-fw fa-trash-o"></i>{{trans('general.trash')}}</a>
+                                <a class="btn btn-primary iframe" href='{!! URL::to("user/event-update/$event->id") !!}'><i class="fa fa-fw fa-edit"></i>{{trans('general.edit')}}</a>
                             </td>
                         </tr>
                             @endforeach

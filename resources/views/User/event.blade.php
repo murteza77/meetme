@@ -1,14 +1,13 @@
 @extends('User.layout')
 @section('content')
+
     <div class="row" xmlns="http://www.w3.org/1999/html">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                My Event
-            </h1>
+          
             <ol class="breadcrumb">
                 <li class="active">
-                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> Dashboard</a> /
-                    <a style="text-decoration: none" href="{!! URL::to('user/event') !!}"> Event</a>
+                    <a style="text-decoration: none" href="{!! URL::to('/') !!}">        {{trans('general.dashbord')}}</a> /
+                    <a style="text-decoration: none" href="{!! URL::to('user/event') !!}">       {{trans('general.event')}}</a>
                 </li>
             </ol>
         </div>
@@ -18,7 +17,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-fw fa-th fa-fw"></i> My Event</h3>
+                    <h3 class="panel-title"><i class="fa fa-fw fa-th fa-fw"></i>        {{trans('general.my_event')}}</h3>
                 </div>
                 <div class="panel-body">
                     <div id='calendar'>
@@ -28,20 +27,20 @@
         </div>
     </div>
 
-    <div id="calEventDialog" title="Create an Event">
+    <div id="calEventDialog" title="{{trans('general.create_event')}}">
         <form class="form-horizontal" id="saveCalender">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="csrf">
 
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Title</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">{{trans('general.title')}}</label>
 
                 <div class="col-sm-9">
-                    <input type="title" required id="title" name="title" class="form-control" placeholder="Title"
+                    <input type="title" required id="title" name="title" class="form-control" placeholder="{{trans('general.title')}}"
                            value="">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-3 control-label">Start</label>
+                <label for="inputPassword3" class="col-sm-3 control-label">{{trans('general.start_time')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" id="from" required name="start_time"
@@ -50,7 +49,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-3 control-label">End</label>
+                <label for="inputPassword3" class="col-sm-3 control-label">{{trans('general.end_time')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" id="to" required name="end_time" class="form-control datepicker2 to readonly"
@@ -63,8 +62,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
-                    <button type="button" id="addReminderCreate" class="btn btn-primary"><i class="fa fa-plus"></i> Add
-                        Reminder
+                    <button type="button" id="addReminderCreate" class="btn btn-primary"><i class="fa fa-plus"></i> {{trans('general.add_reminder')}}
                     </button>
                 </div>
             </div>
@@ -72,7 +70,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
                     <button type="submit" id="" class="btn btn-default"><i class="fa fa-fw fa-plus"></i>
-                        Create
+                        {{trans('general.create')}}
                     </button>
                 </div>
             </div>
@@ -80,19 +78,19 @@
     </div>
 
 
-    <div id="editEvent" title="Update an Event">
+    <div id="editEvent" title="{{trans('general.event_update')}}">
         <form class="form-horizontal" id="updateCalenderEvent">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="csrf">
 
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Title</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">{{trans('general.title')}}</label>
 
                 <div class="col-sm-9">
-                    <input type="title" id="editTitle" name="title" class="form-control" placeholder="Title">
+                    <input type="title" id="editTitle" name="title" class="form-control" placeholder="{{trans('general.title')}}">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-3 control-label">Start</label>
+                <label for="inputPassword3" class="col-sm-3 control-label">{{trans('general.start_time')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" id="editStart" name="start" readonly class="form-control datepicker from"
@@ -100,7 +98,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-3 control-label">End</label>
+                <label for="inputPassword3" class="col-sm-3 control-label">{{trans('general.end_time')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" id="editEnd" name="end" readonly class="form-control datepicker2 to"
@@ -116,15 +114,14 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
-                    <button type="button" id="updateReminderCreate" class="btn btn-primary"><i class="fa fa-plus"></i> Add
-                        Reminder
+                    <button type="button" id="updateReminderCreate" class="btn btn-primary"><i class="fa fa-plus"></i> {{trans('general.add_reminder')}}
                     </button>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-9">
                     <button type="submit" id="updateEvent" class="btn btn-default"><i class="fa fa-fw fa-edit"></i>
-                        Update
+                        {{trans('general.update')}}
                     </button>
                 </div>
             </div>
@@ -138,22 +135,22 @@
                 <span class="col-sm-1 pull-right reminder-cross delete_reminder" style="cursor: pointer">X</span>
             </div>
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Reminder Date</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">{{trans('general.reminder_date')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" required name="reminder_date[]" class="form-control reminder_date readonly">
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Reminder to(Email)</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">{{trans('general.email')}}</label>
 
                 <div class="col-sm-9">
                     <input type="text" required name="reminder_email[]" class="form-control"
-                           placeholder="Example : imtiazpabel@yahoo.com,ippabel@gmail.com">
+                        >
                 </div>
             </div>
             <div class="form-group">
-                <label for="inputEmail3" class="col-sm-3 control-label">Reminder Text</label>
+                <label for="inputEmail3" class="col-sm-3 control-label">{{trans('general.reminder_text')}}</label>
 
                 <div class="col-sm-9">
                     <textarea name="reminder_text[]" class="form-control" required></textarea>
@@ -201,7 +198,7 @@
             });
             $("#addReminderCreate").click(function (event) {
                 event.preventDefault();
-                $("#addReminderCreate").html('<i class="fa fa-plus"></i> Add More Reminder');
+                $("#addReminderCreate").html('<i class="fa fa-plus"></i> {{trans('general.add_more_reminder')}}');
                 $("#addReminderShow").append($(".addReminderView").html());
             });
             $("#updateReminderCreate").click(function (event) {
@@ -412,16 +409,16 @@
                          '<hr class="col-sm-10 hr-clr-green"/>'+
                                  '<span class="col-sm-1 pull-right reminder-cross delete_reminder" style="cursor: pointer">X</span>'+
                                  '</div><div class="form-group">'+
-                                 '<label for="inputEmail3" class="col-sm-3 control-label">Reminder Date</label>'+
+                                 '<label for="inputEmail3" class="col-sm-3 control-label">{{trans('general.reminder_date')}}</label>'+
                          '<div class="col-sm-9">'+
                                  '<input type="text" required name="reminder_date[]" class="form-control reminder_date readonly" value="'+event.reminder[key].reminder_date+'">'+
                                  '<input type="hidden" required name="reminder_id[]"  value="'+event.reminder[key].reminder_id+'">'+
                                  '</div></div><div class="form-group">'+
-                                 '<label for="inputEmail3" class="col-sm-3 control-label">Reminder to(Email)</label>'+
+                                 '<label for="inputEmail3" class="col-sm-3 control-label">{{trans('general.reminder_email')}}</label>'+
                          '<div class="col-sm-9">'+
-                                 '<input type="text" required name="reminder_email[]" class="form-control" placeholder="Example : imtiazpabel@yahoo.com,ippabel@gmail.com" value="'+event.reminder[key].reminder_email+'">'+
+                                 '<input type="text" required name="reminder_email[]" class="form-control" value="'+event.reminder[key].reminder_email+'">'+
                                  '</div></div><div class="form-group">'+
-                                 '<label for="inputEmail3" class="col-sm-3 control-label">Reminder Text</label>'+
+                                 '<label for="inputEmail3" class="col-sm-3 control-label">{{trans('general.reminder_text')}}</label>'+
                          '<div class="col-sm-9">'+
                                  '<textarea name="reminder_text[]" class="form-control" required>'+event.reminder[key].reminder_text+'</textarea>'+
                          '</div></div></div>'

@@ -1,13 +1,13 @@
 @extends('User.layout')
 @section('content')
+
+
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                Event Trash
-            </h1>
+            
             <ol class="breadcrumb">
                 <li class="active">
-                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> Dashboard</a> /
+                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> {{trans('general.dashbord')}}</a> /
                     <a style="text-decoration: none" href="{!! URL::to('user/event-trash') !!}"> Event Trash</a>
                 </li>
             </ol>
@@ -27,7 +27,8 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-fw fa-table fa-fw"></i> My Event Trash</h3>
+                    <h3 class="panel-title"><i class="fa fa-fw fa-table fa-fw"></i>
+                    {{trans('general.my_event_trash')}}</h3>
                 </div>
                 <div class="panel-body">
                     <table id="example" class="display" cellspacing="0" width="100%">

@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 {!!
     header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
 !!}
 <head>
-    <title> Appointment Schedule System</title>
+        
+
+
+
+
+    <title> {{trans('general.App_name')}}</title>
 
     {!! HTML::script('js/jquery-2.0.3.min.js') !!}
     <!-- Bootstrap Core CSS -->
     {!! HTML::style('css/bootstrap.min.css') !!}
 
+
+ {!! (isRTL())?
+             HTML::style('css/bootstrap-rtl.min.css') :
+             HTML::style('css/bootstrap.min.css')
+        !!}
     <!-- Custom CSS -->
     {!! HTML::style('css/sb-admin-2.css') !!}
 
@@ -55,22 +66,22 @@
                             </div>
                 @endif
                 <div class="panel-heading">
-                    <h3 class="panel-title">Meeting Scheduler Login</h3>
+                    <h3 class="panel-title">{{trans('general.create_account')}}</h3>
                 </div>
                 <div class="panel-body">
                     {!! Form::open(array('accept-charset' => 'utf-8', 'role' => 'form', 'url' => 'account/login')) !!}
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus required>
+                            <input class="form-control" placeholder="{{trans('general.email')}}" name="email" type="email" autofocus required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="Password" name="password" type="password" required>
+                            <input class="form-control" placeholder="{{trans('general.password')}}" name="password" type="password" required>
                         </div>
                         <div class="form-group">
-                            <a style="text-decoration: none" href="{!! URL::to('account/create') !!}">Create an Account</a>
+                            <a style="text-decoration: none" href="{!! URL::to('account/create') !!}">{{trans('general.create_account')}}</a>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-lg btn-success btn-block" value="Login">
+                            <input type="submit" class="btn btn-lg btn-success btn-block" value="{{trans('general.login')}}">
                         </div>
                         <!-- Change this to a button or input when using this as a form -->
 

@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 
 <head>
-    <title>Kingpabel Scheduler Create Account</title>
+    <title>{{trans('general.system_title')}}</title>
 
     {!! HTML::script('js/jquery-2.0.3.min.js') !!}
     <!-- Bootstrap Core CSS -->
     {!! HTML::style('css/bootstrap.min.css') !!}
-
+ {!! (isRTL())?
+             HTML::style('css/bootstrap-rtl.min.css') :
+             HTML::style('css/bootstrap.min.css')
+        !!}
     <!-- Custom CSS -->
     {!! HTML::style('css/sb-admin-2.css') !!}
 
@@ -44,6 +48,9 @@
         ga('send', 'pageview');
 
     </script>
+
+    
+
 </head>
 
 <body>
@@ -63,34 +70,34 @@
                     </div>
                 @endif
                 <div class="panel-heading">
-                    <h3 class="panel-title">Create MEW Scheduler Account</h3>
+                    <h3 class="panel-title">{!! trans('general.create_account') !!}</h3>
                 </div>
                 <div class="panel-body">
                     {!! Form::open(array('accept-charset' => 'utf-8', 'role' => 'form', 'url' => 'account/create')) !!}
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control input" placeholder="First Name" name="first_name" type="text" autofocus required @if(Session::has('input.first_name')) value="{!! Session::get('input.first_name') !!}" @endif>
+                            <input class="form-control input" placeholder="{{trans('general.first_name')}}" name="first_name" type="text" autofocus required @if(Session::has('input.first_name')) value="{!! Session::get('input.first_name') !!}" @endif>
                         </div>
                         <div class="form-group">
-                            <input class="form-control input" placeholder="Last Name" name="last_name" type="text" required @if(Session::has('input.last_name')) value="{!! Session::get('input.last_name') !!}" @endif>
+                            <input class="form-control input" placeholder="{{trans('general.last_name')}}" name="last_name" type="text" required @if(Session::has('input.last_name')) value="{!! Session::get('input.last_name') !!}" @endif>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" placeholder="E-mail" name="email" type="email"  required @if(Session::has('input.email')) value="{!! Session::get('input.email') !!}" @endif>
+                            <input class="form-control" placeholder="{{trans('general.email')}}" name="email" type="email"  required @if(Session::has('input.email')) value="{!! Session::get('input.email') !!}" @endif>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="password" placeholder="Password" name="password" type="password" required>
+                            <input class="form-control" id="password" placeholder="{{trans('general.password')}}" name="password" type="password" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="confirm_password" placeholder="Confirm Password" name="confirm_password" type="password" required>
+                            <input class="form-control" id="confirm_password" placeholder="{{trans('general.confirm_password')}}" name="confirm_password" type="password" required>
                         </div>
                         <div class="form-group">
-                            <input class="form-control number" placeholder="Phone Number" name="phone" type="text" required @if(Session::has('input.phone')) value="{!! Session::get('input.phone') !!}" @endif>
+                            <input class="form-control number" placeholder="{{trans('general.phone')}}" name="phone" type="text" required @if(Session::has('input.phone')) value="{!! Session::get('input.phone') !!}" @endif>
                         </div>
                         <div class="form-group">
-                            Already Have an Account <a style="text-decoration: none" href="{!! URL::to('/') !!}">Login</a>
+                           {{ trans('general.already_account')}} <a style="text-decoration: none" href="{!! URL::to('/') !!}">{{trans('general.login')}}</a>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-fw fa-plus"></i>Create</button>
+                            <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-fw fa-plus"></i>{{trans('general.create')}}</button>
                         </div>
                     </fieldset>
                     </form>
