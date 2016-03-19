@@ -82,13 +82,16 @@
 
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control input" placeholder="<?php echo e(trans('general.first_name')); ?>" name="first_name" type="text" autofocus required <?php if(Session::has('input.first_name')): ?> value="<?php echo Session::get('input.first_name'); ?>" <?php endif; ?>>
+                            <input class="form-control " placeholder="<?php echo e(trans('general.first_name')); ?>" name="first_name" type="text" autofocus required <?php if(Session::has('input.first_name')): ?> value="<?php echo Session::get('input.first_name'); ?>" <?php endif; ?>>
                         </div>
                         <div class="form-group">
-                            <input class="form-control input" placeholder="<?php echo e(trans('general.last_name')); ?>" name="last_name" type="text" required <?php if(Session::has('input.last_name')): ?> value="<?php echo Session::get('input.last_name'); ?>" <?php endif; ?>>
+                            <input class="form-control " placeholder="<?php echo e(trans('general.last_name')); ?>" name="last_name" type="text" required <?php if(Session::has('input.last_name')): ?> value="<?php echo Session::get('input.last_name'); ?>" <?php endif; ?>>
                         </div>
                         <div class="form-group">
                             <input class="form-control" placeholder="<?php echo e(trans('general.email')); ?>" name="email" type="email"  required <?php if(Session::has('input.email')): ?> value="<?php echo Session::get('input.email'); ?>" <?php endif; ?>>
+                        </div>
+                         <div class="form-group">
+                            <input class="form-control" placeholder="<?php echo e(trans('general.org')); ?>" name="org" type="text"  required <?php if(Session::has('input.org')): ?> value="<?php echo Session::get('input.org'); ?>" <?php endif; ?>>
                         </div>
                         <div class="form-group">
                             <input class="form-control" id="password" placeholder="<?php echo e(trans('general.password')); ?>" name="password" type="password" required>

@@ -38,7 +38,7 @@
 
                         <div class="col-sm-10">
                             <input type="text" readonly class="form-control from" name="start" required
-                                   placeholder="Start Time"
+                                   placeholder="{{trans('general.start_time')}}"
                                    value="{!! date('Y-m-d H:i', strtotime($event->start_time)) !!}" style="width: 60%">
                         </div>
                     </div>
@@ -47,7 +47,7 @@
 
                         <div class="col-sm-10">
                             <input type="text" readonly class="form-control to" name="end" required
-                                   placeholder="End Time" value="{!! date('Y-m-d H:i', strtotime($event->end_time)) !!}"
+                                   placeholder="{{trans('general.end_time')}}" value="{!! date('Y-m-d H:i', strtotime($event->end_time)) !!}"
                                    style="width: 60%">
                         </div>
                     </div>

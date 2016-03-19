@@ -37,7 +37,9 @@ class CrudModelCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/../stubs/model.stub';
+        return config('crudgenerator.custom_template')
+        ? config('crudgenerator.path') . '/model.stub'
+        : __DIR__ . '/../stubs/model.stub';
     }
 
     /**
@@ -55,13 +57,14 @@ class CrudModelCommand extends GeneratorCommand
      * Build the model class with the given name.
      *
      * @param  string  $name
+     *
      * @return string
      */
     protected function buildClass($name)
     {
         $stub = $this->files->get($this->getStub());
 
-        $table = $this->option('table') ?: strtolower($this->argument('name'));
+        $table = $this->option('table') ?: $this->argument('name');
         $fillable = $this->option('fillable');
 
         return $this->replaceNamespace($stub, $name)
@@ -74,6 +77,8 @@ class CrudModelCommand extends GeneratorCommand
      * Replace the table for the given stub.
      *
      * @param  string  $stub
+     * @param  string  $table
+     *
      * @return $this
      */
     protected function replaceTable(&$stub, $table)
@@ -89,6 +94,8 @@ class CrudModelCommand extends GeneratorCommand
      * Replace the fillable for the given stub.
      *
      * @param  string  $stub
+     * @param  string  $fillable
+     *
      * @return $this
      */
     protected function replaceFillable(&$stub, $fillable)
@@ -99,4 +106,5 @@ class CrudModelCommand extends GeneratorCommand
 
         return $this;
     }
+
 }

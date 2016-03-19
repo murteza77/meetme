@@ -42,9 +42,10 @@ class AccountController extends Controller
     {
         if (Input::all()) {
             $rules = array(
-                'first_name' => 'required|alpha_num_spaces',
-                'last_name' => 'required|alpha_num_spaces',
+                'first_name' => 'required',
+                'last_name' => 'required',
                 'email' => "required|email|unique:users,email",
+                'org' => "required",
 //                'phone' => 'required|phone_number',
                 'phone' => 'required',
                 'password' => 'required|same:confirm_password|min:6',
@@ -65,6 +66,7 @@ class AccountController extends Controller
                 $user->first_name = Input::get('first_name');
                 $user->last_name = Input::get('last_name');
                 $user->email = Input::get('email');
+                 $user->org = Input::get('org');
                 $user->phone = Input::get('phone');
                 $user->password = Hash::make(Input::get('password'));
                 $user->save();

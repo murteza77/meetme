@@ -102,7 +102,7 @@
     <script type="text/javascript" language="javascript" class="init">
         $(document).ready(function() {
             $('#example').DataTable( {
-                dom: 'T<"clear">lfrtip'
+                dom: '  T<"clear">lfrtip'
             });
         });
     </script>

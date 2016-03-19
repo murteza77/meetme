@@ -66,7 +66,7 @@
                             </div>
                 @endif
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{trans('general.create_account')}}</h3>
+                    <h3 class="panel-title">{{trans('general.login')}}</h3>
                 </div>
                 <div class="panel-body">
                     {!! Form::open(array('accept-charset' => 'utf-8', 'role' => 'form', 'url' => 'account/login')) !!}

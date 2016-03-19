@@ -46,7 +46,35 @@ class PredisCache extends CacheProvider
     {
         $fetchedItems = call_user_func_array(array($this->client, 'mget'), $keys);
 
-        return array_filter(array_combine($keys, array_map('unserialize', $fetchedItems)));
+        return array_map('unserialize', array_filter(array_combine($keys, $fetchedItems)));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function doSaveMultiple(array $keysAndValues, $lifetime = 0)
+    {
+        if ($lifetime) {
+            $success = true;
+
+            // Keys have lifetime, use SETEX for each of them
+            foreach ($keysAndValues as $key => $value) {
+                $response = $this->client->setex($key, $lifetime, serialize($value));
+
+                if ((string) $response != 'OK') {
+                    $success = false;
+                }
+            }
+
+            return $success;
+        }
+
+        // No lifetime, use MSET
+        $response = $this->client->mset(array_map(function ($value) {
+            return serialize($value);
+        }, $keysAndValues));
+
+        return (string) $response == 'OK';
     }
 
     /**

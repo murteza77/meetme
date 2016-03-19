@@ -2,17 +2,17 @@
 
 @section('content')
 
-    <h1>Create New %%crudNameSingularCap%%</h1>
+    <h1>Create New %%modelName%%</h1>
     <hr/>
 
-    {!! Form::open(['url' => '%%crudName%%', 'class' => 'form-horizontal']) !!}
-    
+    {!! Form::open(['url' => '%%routeGroup%%%%crudName%%', 'class' => 'form-horizontal']) !!}
+
     %%formFieldsHtml%%
 
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Create', ['class' => 'btn btn-primary form-control']) !!}
-        </div>    
+        </div>
     </div>
     {!! Form::close() !!}
 

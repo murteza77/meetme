@@ -2,13 +2,17 @@
 
 @section('content')
 
-    <h1>Edit %%crudNameSingularCap%%</h1>
+    <h1>Edit %%modelName%%</h1>
     <hr/>
 
-    {!! Form::model($%%crudNameSingular%%, ['method' => 'PATCH', 'action' => ['%%crudNameCap%%Controller@update', $%%crudNameSingular%%->id], 'class' => 'form-horizontal']) !!}
+    {!! Form::model($%%crudNameSingular%%, [
+        'method' => 'PATCH',
+        'url' => ['%%routeGroup%%%%crudName%%', $%%crudNameSingular%%->id],
+        'class' => 'form-horizontal'
+    ]) !!}
 
     %%formFieldsHtml%%
-    
+
     <div class="form-group">
         <div class="col-sm-offset-3 col-sm-3">
             {!! Form::submit('Update', ['class' => 'btn btn-primary form-control']) !!}

@@ -147,7 +147,7 @@ class DebugClassLoader
         try {
             if ($this->isFinder) {
                 if ($file = $this->classLoader[0]->findFile($class)) {
-                    require $file;
+                    require_once $file;
                 }
             } else {
                 call_user_func($this->classLoader, $class);
@@ -224,7 +224,7 @@ class DebugClassLoader
                 $i = count($tail) - 1;
                 $j = count($real) - 1;
 
-                 while (isset($tail[$i], $real[$j]) && $tail[$i] === $real[$j]) {
+                while (isset($tail[$i], $real[$j]) && $tail[$i] === $real[$j]) {
                     --$i;
                     --$j;
                 }

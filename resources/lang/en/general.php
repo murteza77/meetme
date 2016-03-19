@@ -85,7 +85,15 @@ return [
 'event_update'							=>'Event Update',
 'event_table'							=>'Event Table',
 'dari'									=>'dari',
-'eng'									=>'English'
+'eng'									=>'English',
+'admin'									=>'admin',
+'username'								=>'User Name',
+'org'									=>'Organization',
+'usertype'								=>'User Type',
+'create_user'							=>'Create User',
+'users_table'							=>'Users Table',
+'user_update'							=>'Update User'
+
 
 
 ];

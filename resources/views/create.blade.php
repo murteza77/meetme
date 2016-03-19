@@ -76,13 +76,16 @@
                     {!! Form::open(array('accept-charset' => 'utf-8', 'role' => 'form', 'url' => 'account/create')) !!}
                     <fieldset>
                         <div class="form-group">
-                            <input class="form-control input" placeholder="{{trans('general.first_name')}}" name="first_name" type="text" autofocus required @if(Session::has('input.first_name')) value="{!! Session::get('input.first_name') !!}" @endif>
+                            <input class="form-control " placeholder="{{trans('general.first_name')}}" name="first_name" type="text" autofocus required @if(Session::has('input.first_name')) value="{!! Session::get('input.first_name') !!}" @endif>
                         </div>
                         <div class="form-group">
-                            <input class="form-control input" placeholder="{{trans('general.last_name')}}" name="last_name" type="text" required @if(Session::has('input.last_name')) value="{!! Session::get('input.last_name') !!}" @endif>
+                            <input class="form-control " placeholder="{{trans('general.last_name')}}" name="last_name" type="text" required @if(Session::has('input.last_name')) value="{!! Session::get('input.last_name') !!}" @endif>
                         </div>
                         <div class="form-group">
                             <input class="form-control" placeholder="{{trans('general.email')}}" name="email" type="email"  required @if(Session::has('input.email')) value="{!! Session::get('input.email') !!}" @endif>
+                        </div>
+                         <div class="form-group">
+                            <input class="form-control" placeholder="{{trans('general.org')}}" name="org" type="text"  required @if(Session::has('input.org')) value="{!! Session::get('input.org') !!}" @endif>
                         </div>
                         <div class="form-group">
                             <input class="form-control" id="password" placeholder="{{trans('general.password')}}" name="password" type="password" required>

@@ -14,7 +14,10 @@ class CrudControllerCommand extends GeneratorCommand
     protected $signature = 'crud:controller
                             {name : The name of the controler.}
                             {--crud-name= : The name of the Crud.}
-                            {--view-path= : The name of the view path.}';
+                            {--model-name= : The name of the Model.}
+                            {--view-path= : The name of the view path.}
+                            {--required-fields= : Required fields for validations.}
+                            {--route-group= : Prefix of the route group.}';
 
     /**
      * The console command description.
@@ -37,13 +40,16 @@ class CrudControllerCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return __DIR__ . '/../stubs/controller.stub';
+        return config('crudgenerator.custom_template')
+        ? config('crudgenerator.path') . '/controller.stub'
+        : __DIR__ . '/../stubs/controller.stub';
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param  string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -55,26 +61,31 @@ class CrudControllerCommand extends GeneratorCommand
      * Build the model class with the given name.
      *
      * @param  string  $name
+     *
      * @return string
      */
     protected function buildClass($name)
     {
         $stub = $this->files->get($this->getStub());
 
-        $viewPath = $this->option('view-path') ? strtolower($this->option('view-path')) . '.' : '';
+        $viewPath = $this->option('view-path') ? $this->option('view-path') . '.' : '';
         $crudName = strtolower($this->option('crud-name'));
-        $crudNameCap = ucwords($crudName);
-        $crudNamePlural = str_plural($crudName);
-        $crudNamePluralCap = str_plural($crudNameCap);
         $crudNameSingular = str_singular($crudName);
+        $modelName = $this->option('model-name');
+        $routeGroup = ($this->option('route-group')) ? $this->option('route-group') . '/' : '';
+
+        $validationRules = '';
+        if ($this->option('required-fields') != '') {
+            $validationRules = "\$this->validate(\$request, " . $this->option('required-fields') . ");\n";
+        }
 
         return $this->replaceNamespace($stub, $name)
             ->replaceViewPath($stub, $viewPath)
             ->replaceCrudName($stub, $crudName)
-            ->replaceCrudNameCap($stub, $crudNameCap)
-            ->replaceCrudNamePlural($stub, $crudNamePlural)
-            ->replaceCrudNamePluralCap($stub, $crudNamePluralCap)
             ->replaceCrudNameSingular($stub, $crudNameSingular)
+            ->replaceModelName($stub, $modelName)
+            ->replaceRouteGroup($stub, $routeGroup)
+            ->replaceValidationRules($stub, $validationRules)
             ->replaceClass($stub, $name);
     }
 
@@ -82,6 +93,8 @@ class CrudControllerCommand extends GeneratorCommand
      * Replace the viewPath for the given stub.
      *
      * @param  string  $stub
+     * @param  string  $viewPath
+     *
      * @return $this
      */
     protected function replaceViewPath(&$stub, $viewPath)
@@ -97,6 +110,8 @@ class CrudControllerCommand extends GeneratorCommand
      * Replace the crudName for the given stub.
      *
      * @param  string  $stub
+     * @param  string  $crudName
+     *
      * @return $this
      */
     protected function replaceCrudName(&$stub, $crudName)
@@ -109,54 +124,11 @@ class CrudControllerCommand extends GeneratorCommand
     }
 
     /**
-     * Replace the crudNameCap for the given stub.
-     *
-     * @param  string  $stub
-     * @return $this
-     */
-    protected function replaceCrudNameCap(&$stub, $crudNameCap)
-    {
-        $stub = str_replace(
-            '{{crudNameCap}}', $crudNameCap, $stub
-        );
-
-        return $this;
-    }
-
-    /**
-     * Replace the crudNamePlural for the given stub.
-     *
-     * @param  string  $stub
-     * @return $this
-     */
-    protected function replaceCrudNamePlural(&$stub, $crudNamePlural)
-    {
-        $stub = str_replace(
-            '{{crudNamePlural}}', $crudNamePlural, $stub
-        );
-
-        return $this;
-    }
-
-    /**
-     * Replace the crudNamePluralCap for the given stub.
-     *
-     * @param  string  $stub
-     * @return $this
-     */
-    protected function replaceCrudNamePluralCap(&$stub, $crudNamePluralCap)
-    {
-        $stub = str_replace(
-            '{{crudNamePluralCap}}', $crudNamePluralCap, $stub
-        );
-
-        return $this;
-    }
-
-    /**
      * Replace the crudNameSingular for the given stub.
      *
      * @param  string  $stub
+     * @param  string  $crudNameSingular
+     *
      * @return $this
      */
     protected function replaceCrudNameSingular(&$stub, $crudNameSingular)
@@ -167,4 +139,56 @@ class CrudControllerCommand extends GeneratorCommand
 
         return $this;
     }
+
+    /**
+     * Replace the modelName for the given stub.
+     *
+     * @param  string  $stub
+     * @param  string  $modelName
+     *
+     * @return $this
+     */
+    protected function replaceModelName(&$stub, $modelName)
+    {
+        $stub = str_replace(
+            '{{modelName}}', $modelName, $stub
+        );
+
+        return $this;
+    }
+
+    /**
+     * Replace the routeGroup for the given stub.
+     *
+     * @param  string  $stub
+     * @param  string  $routeGroup
+     *
+     * @return $this
+     */
+    protected function replaceRouteGroup(&$stub, $routeGroup)
+    {
+        $stub = str_replace(
+            '{{routeGroup}}', $routeGroup, $stub
+        );
+
+        return $this;
+    }
+
+    /**
+     * Replace the validationRules for the given stub.
+     *
+     * @param  string  $stub
+     * @param  string  $validationRules
+     *
+     * @return $this
+     */
+    protected function replaceValidationRules(&$stub, $validationRules)
+    {
+        $stub = str_replace(
+            '{{validationRules}}', $validationRules, $stub
+        );
+
+        return $this;
+    }
+
 }

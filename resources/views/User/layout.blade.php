@@ -193,6 +193,7 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+
                     <li>
                         <a class="@if($menu == 'Report') active @endif" href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
                               {{ trans('general.report') }} <span class="fa arrow"></span></a>
@@ -203,9 +204,21 @@
                             <li>
                                 <a href="{!! URL::to('user/calender-report') !!}">  {{ trans('general.calendar_report')}}</a>
                             </li>
+
+
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+
+                    <li>
+                        <a class="@if($menu == 'admin') active @endif" href="{!! URL::to('user/admin') !!}"><i
+                                    class="fa fa-fw fa-trash-o"></i> {{ trans('general.admin') }}</a>
+                    </li>
+                     <li>
+                        <a class="@if($menu == 'Table2') active @endif" href="{!! URL::to('user/table-user') !!}"><i
+                                    class="fa fa-fw fa-table"></i> {{ trans('general.event_table') }}</a>
+                    </li>
+
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

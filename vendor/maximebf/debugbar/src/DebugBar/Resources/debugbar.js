@@ -260,7 +260,7 @@ if (typeof(PhpDebugBar) == 'undefined') {
             this.$icon = $('<i />').appendTo(this.$tab);
             this.bindAttr('icon', function(icon) {
                 if (icon) {
-                    this.$icon.attr('class', 'fa fa-' + icon);
+                    this.$icon.attr('class', 'phpdebugbar-fa phpdebugbar-fa-' + icon);
                 } else {
                     this.$icon.attr('class', '');
                 }
@@ -315,7 +315,7 @@ if (typeof(PhpDebugBar) == 'undefined') {
             this.$icon = $('<i />').appendTo(this.$el);
             this.bindAttr('icon', function(icon) {
                 if (icon) {
-                    this.$icon.attr('class', 'fa fa-' + icon);
+                    this.$icon.attr('class', 'phpdebugbar-fa phpdebugbar-fa-' + icon);
                 } else {
                     this.$icon.attr('class', '');
                 }
@@ -395,7 +395,8 @@ if (typeof(PhpDebugBar) == 'undefined') {
         className: "phpdebugbar " + csscls('minimized'),
 
         options: {
-            bodyPaddingBottom: true
+            bodyPaddingBottom: true,
+            bodyPaddingBottomHeight: parseInt($('body').css('padding-bottom'))
         },
 
         initialize: function() {
@@ -817,7 +818,8 @@ if (typeof(PhpDebugBar) == 'undefined') {
          */
         recomputeBottomOffset: function() {
             if (this.options.bodyPaddingBottom) {
-                $('body').css('padding-bottom', this.$el.height());
+                var height = parseInt(this.$el.height()) + this.options.bodyPaddingBottomHeight;
+                $('body').css('padding-bottom', height);
             }
         },
 

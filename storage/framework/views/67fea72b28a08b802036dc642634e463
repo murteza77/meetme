@@ -205,6 +205,7 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+
                     <li>
                         <a class="<?php if($menu == 'Report'): ?> active <?php endif; ?>" href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
                               <?php echo e(trans('general.report')); ?> <span class="fa arrow"></span></a>
@@ -215,9 +216,21 @@
                             <li>
                                 <a href="<?php echo URL::to('user/calender-report'); ?>">  <?php echo e(trans('general.calendar_report')); ?></a>
                             </li>
+
+
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+
+                    <li>
+                        <a class="<?php if($menu == 'admin'): ?> active <?php endif; ?>" href="<?php echo URL::to('user/admin'); ?>"><i
+                                    class="fa fa-fw fa-trash-o"></i> <?php echo e(trans('general.admin')); ?></a>
+                    </li>
+                     <li>
+                        <a class="<?php if($menu == 'Table2'): ?> active <?php endif; ?>" href="<?php echo URL::to('user/table-user'); ?>"><i
+                                    class="fa fa-fw fa-table"></i> <?php echo e(trans('general.event_table')); ?></a>
+                    </li>
+
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

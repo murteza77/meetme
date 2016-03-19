@@ -4,12 +4,12 @@
 return [
 'system_title'  						=>'برنامه ریزی جلسات',							
 'App_name'							    =>'جلسه',
-'dashbord'								=>'داشبورد',				
+'dashbord'								=>'دشبورد',				
 'create_event'							=>'ایجاد جلسه',
 'event_table'							=>'جدول جلسه ها',
 'trash'									=>'سطل آشفغال',
 'setting'								=>'تنظیمات',
-'view_details'							=>'دیدن جیزیات',
+'view_details'							=>'دیدن جزیات',
 'meeting_this_month'					=>'جلسه های این ماه',
 'meeting_last_month'					=>'جلسه های ماه گذشته',
 'meeting_next_month'					=>'چلسه های ماه بعد',
@@ -36,7 +36,7 @@ return [
 
 'action'								=>'عملیات',
 'edit'									=>'ویرایش',
-'trash'									=>'سطل آشغال',
+'trash'									=>'حذف',
 'previus'								=>'قبلی',
 'next'									=>'بعدی',
 'show'									=>'نمایش',
@@ -54,7 +54,7 @@ return [
 
 
 'update_information'					=>'به روز رسانی معلومات',
-'first_name'							=>'اسم کوچک',
+'first_name'							=>'نام ',
 'last_name'								=>'تخلص',
 'email'									=>'ایمیل',
 'phone'									=>'موبایل',
@@ -87,8 +87,13 @@ return [
 'event_update'							=>'به روز رسانی جلسه',
 'event_table'							=>'جدول جلسه ها',
 'dari'									=>'دری',
-'eng'									=>'اینگلیسی'
-
-
+'eng'									=>'اینگلیسی',
+'admin'									=>'مدیریت کاربران',
+'username'								=>'نام کاربر',
+'org'									=>'ریاست مربوطه',
+'usertype'								=>'نوعیت کاربر',
+'create_user'							=>'ایجاد کاربر',
+'users_table'							=>'جدول کاربران سیستم',
+'user_update'							=>'به روز رسانی کاربر'
 ];
 

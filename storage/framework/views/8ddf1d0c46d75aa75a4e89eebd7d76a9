@@ -70,7 +70,7 @@
                             </div>
                 <?php endif; ?>
                 <div class="panel-heading">
-                    <h3 class="panel-title"><?php echo e(trans('general.create_account')); ?></h3>
+                    <h3 class="panel-title"><?php echo e(trans('general.login')); ?></h3>
                 </div>
                 <div class="panel-body">
                     <?php echo Form::open(array('accept-charset' => 'utf-8', 'role' => 'form', 'url' => 'account/login')); ?>

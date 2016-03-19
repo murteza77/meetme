@@ -1,3 +1,3 @@
 <?php
-    header('Location: http://localhost/meetme/public');
+    header('Location: http:82//localhost/meetme/public');
     

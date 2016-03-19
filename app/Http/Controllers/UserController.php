@@ -12,8 +12,10 @@ use App\Schedule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
-use Symfony\Component\Security\Core\User\User;
+//use Symfony\Component\Security\Core\User\User;
+use App\User;
 use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -101,7 +103,7 @@ class UserController extends Controller
             $rules = array(
                 'first_name' => 'required|alpha_num_spaces',
                 'last_name' => 'required|alpha_num_spaces',
-                'email' => "required|email|unique:users,email,$id",
+                'email'     => "required|email|unique:users,email,$id",
 //                'phone' => 'required|phone_number',
             );
             /* Laravel Validator Rules Apply */
@@ -118,6 +120,8 @@ class UserController extends Controller
                 $user->email_status = Input::get('email_status');
                 $user->save();
                 return 'true';
+                return redirect('updateinfo');
+
             endif;
         } else {
             $data['menu'] = 'Setting';
@@ -234,12 +238,6 @@ class UserController extends Controller
 
             else {
 
-                if (Input::get('reminder_date') && is_array(Input::get('reminder_date')) && !empty(Input::get('reminder_date')) && count(Input::get('reminder_date')) != count(array_unique(Input::get('reminder_date')))) {
-                    $response['type'] = 'error';
-                    $response['data'] = "Please don't Select Same Multiple Reminder Date.";
-                    return Response::json($response);
-                }
-
                 if (Input::get('start') > Input::get('end'))
                     return 'Start Time Can not be Greater Than End Time';
 
@@ -309,11 +307,7 @@ class UserController extends Controller
 
         } else {
 
-            if (Input::get('reminder_date') && is_array(Input::get('reminder_date')) && !empty(Input::get('reminder_date')) && count(Input::get('reminder_date')) != count(array_unique(Input::get('reminder_date')))) {
-                $response['type'] = 'error';
-                $response['data'] = "Please don't Select Same Multiple Reminder Date.";
-                return Response::json($response);
-            }
+           
 
             if (Input::get('start_time') > Input::get('end_time')) {
                 $response['type'] = 'error';
@@ -384,8 +378,6 @@ class UserController extends Controller
 
         else {
 
-            if (Input::get('reminder_date') && is_array(Input::get('reminder_date')) && !empty(Input::get('reminder_date')) && count(Input::get('reminder_date')) != count(array_unique(Input::get('reminder_date'))))
-                return "Please don't Select Same Multiple Reminder Date.";
 
             if (Input::get('start') > Input::get('end'))
                 return 'Start Time Can not be Greater Than End Time';
@@ -458,8 +450,6 @@ class UserController extends Controller
                 return $validator->messages()->first();
             else {
 
-                if (Input::get('reminder_date') && is_array(Input::get('reminder_date')) && !empty(Input::get('reminder_date')) && count(Input::get('reminder_date')) != count(array_unique(Input::get('reminder_date'))))
-                    return "Please don't Select Same Multiple Reminder Date.";
 
                 if (Input::get('start') > Input::get('end'))
                     return 'Start Time Can not be Greater Than End Time';
@@ -584,9 +574,142 @@ class UserController extends Controller
         }
     }
 
+    public function getAdmin()
+    {
+
+        $data['menu'] = 'admin';
+        $data['users'] = User::all();
+
+        return view('User.admin',$data);
+    }
+
+  
+
+   public function anyCreateUser()
+    {
+
+            $data['menu'] = 'Create User';
+            return view('User.createuser', $data);
+        
+    }
 
 
-//get lang
-    
+ public function getTrashUser()
+    {
+        $event = USer::find(Input::get('id'));
+        $event->delete();
+        return 'true';
+    }
+      public function getTableUser()
+    {
+        $data['menu'] = 'Table';
+        $data['users'] = User::orderBy('id', 'desc')->paginate(500);
+        return view('User.tableUser', $data);
+    }
+
+     public function anyUserUpdate($id = null)
+    {
+
+        if (Input::all()) {
+            $rules = array(
+                'first_name'    =>'required',
+                'last_name'     =>'required',
+                'email'         =>'required|email',
+                'org'           =>'required',
+                'phone'         =>'required',
+                );
+
+         /* Laravel Validator Rules Apply */
+            $validator = Validator::make(Input::all(), $rules);
+            //dd($validator);
+                if ($validator->fails())
+                    return $validator->messages()->first();
+                else
+                {
+
+                $user = User::find(Input::get('id'));
+                $user->first_name =    Input::get('first_name');
+                $user->last_name =     Input::get('last_name');
+                $user->email =         Input::get('email');
+                $user->org =           Input::get('org');
+                $user->phone =         Input::get('phone');
+                $user->save();
+
+                Session::flash('success', 'User Update Successfully');
+
+               // return view('User.dashboard');
+                }
+                
+        }
+
+        $data['user'] = User::find($id);
+                $data['menu'] = 'Table';
+                return view('User.userUpdate', $data);
+       
+    }
+
+    public function postUpdateUser()
+    {
+        $rules = array(
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'org' => 'required',
+            'phone' => 'required',
+        );
+        /* Laravel Validator Rules Apply */
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails())
+            return $validator->messages()->first();
+
+        else {
+
+
+          
+            $user = User::find(Input::get('id'));
+            $user->first_name = Input::get('first_name');
+            $user->last_name = Input::get('last_name');
+            $user->email = Input::get('email');
+            $user->email = Input::get('org');
+            $user->phone = Input::get('phone');
+            $user->save();
+
+            ScheduleReminder::where('schedule_id', Input::get('id'))->forceDelete();
+            if (Input::get('reminder_date') && is_array(Input::get('reminder_date')) && !empty(Input::get('reminder_date'))) {
+
+                //for duplicate check from database
+                /*for ($i = 0; $i <= count(Input::get('reminder_date')) - 1; $i++) {
+                    $duplicateReminder = ScheduleReminder::where('schedule_id', $event->id)
+                            ->where('reminder_date', Input::get('reminder_date')[$i])
+                        ->first();
+                    if($duplicateReminder)
+                        return 'You are already created an reminder on '.Input::get('reminder_date')[$i];
+                }*/
+
+                for ($i = 0; $i <= count(Input::get('reminder_date')) - 1; $i++) {
+                    $reminder = new ScheduleReminder();
+                    $reminder->schedule_id = Input::get('id');
+                    $reminder->reminder_date = Input::get('reminder_date')[$i];
+                    $reminder->reminder_email = Input::get('reminder_email')[$i];
+                    $reminder->reminder_text = Input::get('reminder_text')[$i];
+                    $reminder->save();
+                }
+
+            }
+        }
+        return 'true';
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 }

@@ -59,8 +59,8 @@ header("Pragma: no-cache");
                         </div>
                         <a href="{!! URL::to('user/event') !!}">
                             <div class="panel-footer">
-                                <span class="pull-left"></span>
-                                <span class="pull-right">{{ trans('general.view_details') }}<i class="fa fa-arrow-circle-right"></i></span>
+                                <span class="pull-left">{{ trans('general.view_details') }}</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
                         </a>

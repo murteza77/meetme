@@ -1,7 +1,6 @@
 @extends('User.layout')
 @section('content')
 
-
     <div class="row">
         <div class="col-lg-12">
            
@@ -13,7 +12,7 @@
             </ol>
         </div>
     </div>
-
+    
     <div class="row" ng-app="setting" ng-controller="settingController">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -50,27 +49,12 @@
                                     <option value="en">{{trans('general.eng')}}</option>
                                     <option value="fa"> {{trans('general.dari')}}</option>
                                 </select>
-
                       
                           </div>
 
 
-
-
                     <?php $lang = ['fa'=>'Dari','en'=>'English'] ?>
 
-
-                    
-<!--  Language select
-
-                     <div class="form-group">
-                          <label for="inputEmail3" class="col-sm-2 control-label"> {{trans('general.lang')}}</label>
-                          <div class="col-sm-10">
-                          {!! Form::select('language', $lang, null,
-                          array('multiple'=>'multiple','name'=>'lang[]')) !!}
-                          </div>
-                     </div>
--->
 
                     </div>
 
@@ -121,7 +105,8 @@
                                 title: 'Message',
                                 text: 'Information Update Successfully',
                                 type: 'success',
-                                delay: 3000
+                                delay: 3000,
+
                             });
                         } else {
                             $.pnotify({
