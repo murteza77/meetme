@@ -3,13 +3,11 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-                Password Change
-            </h1>
+
             <ol class="breadcrumb">
                 <li class="active">
-                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> Dashboard</a> /
-                    <a style="text-decoration: none" href="{!! URL::to('user/password-change') !!}"> Change Password</a>
+                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> {{trans('general.dashbord')}}</a> /
+                    <a style="text-decoration: none" href="{!! URL::to('user/password-change') !!}"> {{trans('general.change_pass')}}</a>
                 </li>
             </ol>
         </div>
@@ -19,31 +17,31 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> Password Change</h3>
+                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> {{trans('general.change_pass')}}</h3>
                 </div>
                 <div class="panel-body">
                     {!! Form::open(array('id' => 'passwordChange', 'accept-charset' => 'utf-8', 'class' => 'form-horizontal', 'method' => 'post', 'ng-submit' => 'update($event)')) !!}
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Current Password</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">{{trans('general.current_pass')}}</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" name="current_password" required placeholder="Old Password" style="width: 60%">
+                            <input type="password" class="form-control" name="current_password" required placeholder="{{trans('general.old_pass')}}" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">New Password</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">{{trans('general.new_pass')}}</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="new_password" name="new_password" required placeholder="New Password" style="width: 60%">
+                            <input type="password" class="form-control" id="new_password" name="new_password" required placeholder="{{trans('general.new_pass')}}" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">Confirm Password</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">{{trans('general.confirm_pass')}}</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required placeholder="Confirm Password" style="width: 60%">
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required placeholder="{{trans('general.confirm_pass')}}" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-edit"></i> Change</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-edit"></i> {{trans('general.change')}}</button>
                         </div>
                     </div>
                     </form>

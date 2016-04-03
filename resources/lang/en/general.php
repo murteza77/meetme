@@ -92,7 +92,15 @@ return [
 'usertype'								=>'User Type',
 'create_user'							=>'Create User',
 'users_table'							=>'Users Table',
-'user_update'							=>'Update User'
+'user_update'							=>'Update User',
+'change_pass'							=>'change password',
+'old_pass'								=>'Old Password',
+'new_pass'						     	=>'New Password',
+'confirm_pass'						    =>'Confirm Password',
+'change'							  	=>'Change',
+'forget_pass'                            =>'Forget Password',
+'remember_me'							=>'Remember Me'
+
 
 
 

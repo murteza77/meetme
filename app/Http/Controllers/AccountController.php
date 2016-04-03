@@ -13,22 +13,34 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use DCN\RBAC\Models\Role;
 
 class AccountController extends Controller
 {
+        public function __Construct()
+        {
+            $this->middleware('permission:create.user', ['only' => ['anyCreate',]]);
+        }
 
     /**
      * @return \Illuminate\Http\RedirectResponse|Redirect
      */
-    public function postLogin()
+     public function postLogin()
     {
+
+
         $credentials = array(
             'email' => Request::input('email'),
             'password' => Request::input('password'),
             'status' => 1
         );
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('user');
+            $user = Auth::user();
+
+          
+                return redirect()->intended('user');
+           
+           
         } else {
             Session::flash('error', 'Your ID or Password Invalid');
             return redirect('/');
@@ -66,11 +78,13 @@ class AccountController extends Controller
                 $user->first_name = Input::get('first_name');
                 $user->last_name = Input::get('last_name');
                 $user->email = Input::get('email');
-                 $user->org = Input::get('org');
+                $user->org = Input::get('org');
                 $user->phone = Input::get('phone');
                 $user->password = Hash::make(Input::get('password'));
                 $user->save();
-                $credentials = array(
+
+               return redirect()->intended('user');
+                /*$credentials = array(
                     'email' => Request::input('email'),
                     'password' => Request::input('password'),
                     'status' => 1
@@ -78,10 +92,10 @@ class AccountController extends Controller
                 if (Auth::attempt($credentials)) {
                     Session::flash('success', 'Thanks For Create Account');
                     return redirect()->intended('user');
-                }
+                }*/
             endif;
         } else {
-            return view('create');
+            return view('auth.create');
         }
     }
 

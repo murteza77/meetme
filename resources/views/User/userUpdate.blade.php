@@ -60,6 +60,15 @@
                                    style="width: 60%">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="pass" class="col-sm-2 control-label">{{trans('general.password')}}</label>
+
+                        <div class="col-sm-10">
+                            <input type="password"  class="form-control " name="pass" required
+                                   value="{!! $user->password !!}"
+                                   style="width: 60%">
+                        </div>
+                    </div>
                      <div class="form-group">
                         <label for="phone" class="col-sm-2 control-label">{{trans('general.phone')}}</label>
 

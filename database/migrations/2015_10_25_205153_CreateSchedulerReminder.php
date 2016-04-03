@@ -15,7 +15,7 @@ class CreateSchedulerReminder extends Migration
         Schema::create('schedule_reminder', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('schedule_id')->unsigned();
-            $table->foreign('schedule_id')->references('id')->on('schedule');
+           // $table->foreign('schedule_id')->references('id')->on('schedule');
             $table->timestamp('reminder_date');
             $table->text('reminder_email');
             $table->longText('reminder_text');

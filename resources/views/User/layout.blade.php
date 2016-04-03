@@ -10,16 +10,8 @@
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 
     <title>
-
-
-
     
     {{ trans('general.App_name') }} </title>
-   
-
-    <?php  
- header("Content-Type: text/html;charset=UTF-8");
-    ?>
 
 
     {!! HTML::script('js/jquery-2.0.3.min.js') !!}
@@ -39,15 +31,10 @@
 
         !!}
 
-
         
    
     {!! HTML::style('css/charisma-app.css') !!}
     {!! HTML::style('css/jquery-ui.css') !!}
-
-
-
-
 
 
     {!! HTML::style('css/custom.css') !!}
@@ -139,7 +126,7 @@
         <ul class="nav navbar-top-links navbar-right" id="username">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i>{!! Auth::user()->first_name !!} <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-user fa-fw"></i>{!! Auth::user()->first_name !!} <i class="fa fa-caret-down"></i> 
                 </a>
                 <ul class="dropdown-menu dropdown-user" >
                     <li>
@@ -159,7 +146,7 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a class="@if($menu == 'Dashboard') active @endif" href="{!! URL::to('user') !!}"><i
+                        <a class="@if(@$menu == 'Dashboard') active @endif" href="{!! URL::to('user') !!}"><i
                                     class="fa fa-fw fa-dashboard"></i>  {{ trans('general.dashbord') }}</a>
                     </li>
                     <li>
@@ -188,7 +175,7 @@
                              
                             </li>
                             <li>
-                               
+                                <a href="{!! URL::to('user/password-change') !!}">{{ trans('general.change_pass') }}</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -210,10 +197,14 @@
                         <!-- /.nav-second-level -->
                     </li>
 
+               
+        @role('admin')
                     <li>
                         <a class="@if($menu == 'admin') active @endif" href="{!! URL::to('user/admin') !!}"><i
                                     class="fa fa-fw fa-trash-o"></i> {{ trans('general.admin') }}</a>
                     </li>
+             
+         @endrole     
                      <li>
                         <a class="@if($menu == 'Table2') active @endif" href="{!! URL::to('user/table-user') !!}"><i
                                     class="fa fa-fw fa-table"></i> {{ trans('general.event_table') }}</a>

@@ -10,16 +10,8 @@
     <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
 
     <title>
-
-
-
     
     <?php echo e(trans('general.App_name')); ?> </title>
-   
-
-    <?php  
- header("Content-Type: text/html;charset=UTF-8");
-    ?>
 
 
     <?php echo HTML::script('js/jquery-2.0.3.min.js'); ?>
@@ -41,16 +33,11 @@
         HTML::style('css/custom.css'); ?>
 
 
-
         
    
     <?php echo HTML::style('css/charisma-app.css'); ?>
 
     <?php echo HTML::style('css/jquery-ui.css'); ?>
-
-
-
-
 
 
 
@@ -151,7 +138,7 @@
         <ul class="nav navbar-top-links navbar-right" id="username">
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i><?php echo Auth::user()->first_name; ?> <i class="fa fa-caret-down"></i>
+                  <i class="fa fa-user fa-fw"></i><?php echo Auth::user()->first_name; ?> <i class="fa fa-caret-down"></i> 
                 </a>
                 <ul class="dropdown-menu dropdown-user" >
                     <li>
@@ -171,7 +158,7 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a class="<?php if($menu == 'Dashboard'): ?> active <?php endif; ?>" href="<?php echo URL::to('user'); ?>"><i
+                        <a class="<?php if(@$menu == 'Dashboard'): ?> active <?php endif; ?>" href="<?php echo URL::to('user'); ?>"><i
                                     class="fa fa-fw fa-dashboard"></i>  <?php echo e(trans('general.dashbord')); ?></a>
                     </li>
                     <li>
@@ -200,7 +187,7 @@
                              
                             </li>
                             <li>
-                               
+                                <a href="<?php echo URL::to('user/password-change'); ?>"><?php echo e(trans('general.change_pass')); ?></a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -222,10 +209,14 @@
                         <!-- /.nav-second-level -->
                     </li>
 
+               
+        <?php if (Auth::check() && Auth::user()->is('admin')): ?>
                     <li>
                         <a class="<?php if($menu == 'admin'): ?> active <?php endif; ?>" href="<?php echo URL::to('user/admin'); ?>"><i
                                     class="fa fa-fw fa-trash-o"></i> <?php echo e(trans('general.admin')); ?></a>
                     </li>
+             
+         <?php endif; ?>     
                      <li>
                         <a class="<?php if($menu == 'Table2'): ?> active <?php endif; ?>" href="<?php echo URL::to('user/table-user'); ?>"><i
                                     class="fa fa-fw fa-table"></i> <?php echo e(trans('general.event_table')); ?></a>

@@ -17,14 +17,24 @@ use App\User;
 use Illuminate\Support\Facades\Hash;
 
 
+
 class UserController extends Controller
 {
+   public function __construct()
+    {
+        $this->middleware('permission:read.user',   ['only' => ['getIndex',]]);
+        $this->middleware('permission:create.user', ['only' => ['anyCreate',]]);
+        $this->middleware('permission:edit.user',   ['only' => ['anyUserUpdate','anyUpdateInfo',]]);
+        $this->middleware('permission:delete.user', ['only' => ['getTrashUser',]]);
+
+    }
 
     /**
      * @return \Illuminate\View\View
      */
     public function getIndex()
     {
+
         $data['monthEvent'] = Schedule::where('start_time', '>=', date('Y-m-01'))
             ->where('start_time', '<=', date('Y-m-t'))
             ->count();
@@ -59,6 +69,7 @@ class UserController extends Controller
      */
     public function getEvent()
     {
+
         $data['menu'] = 'Event';
         $data['events'] = Schedule::all();
         return view('User.event', $data);
@@ -69,6 +80,7 @@ class UserController extends Controller
      */
     public function anyPasswordChange()
     {
+
         if (Input::all()) {
             $rules = array(
                 'new_password' => 'required|same:confirm_password|min:6',
@@ -616,6 +628,7 @@ class UserController extends Controller
                 'last_name'     =>'required',
                 'email'         =>'required|email',
                 'org'           =>'required',
+                'pass'           =>'required',
                 'phone'         =>'required',
                 );
 
@@ -632,6 +645,8 @@ class UserController extends Controller
                 $user->last_name =     Input::get('last_name');
                 $user->email =         Input::get('email');
                 $user->org =           Input::get('org');
+               $user->password =      Hash::make(Input::get('pass'));
+               // $user->password =      Input::get('pass');
                 $user->phone =         Input::get('phone');
                 $user->save();
 
@@ -655,6 +670,7 @@ class UserController extends Controller
             'last_name' => 'required',
             'email' => 'required',
             'org' => 'required',
+            'pass' => 'required',
             'phone' => 'required',
         );
         /* Laravel Validator Rules Apply */
@@ -671,7 +687,8 @@ class UserController extends Controller
             $user->first_name = Input::get('first_name');
             $user->last_name = Input::get('last_name');
             $user->email = Input::get('email');
-            $user->email = Input::get('org');
+            $user->org = Input::get('org');
+            $user->pass = Input::get('password');
             $user->phone = Input::get('phone');
             $user->save();
 
@@ -700,16 +717,6 @@ class UserController extends Controller
         }
         return 'true';
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }

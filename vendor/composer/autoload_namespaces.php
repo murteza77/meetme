@@ -21,5 +21,6 @@ return array(
     'Doctrine\\Common\\Collections\\' => array($vendorDir . '/doctrine/collections/lib'),
     'Doctrine\\Common\\Annotations\\' => array($vendorDir . '/doctrine/annotations/lib'),
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
+    'DCN\\RBAC' => array($vendorDir . '/dcn/rbac/src'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
 );

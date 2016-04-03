@@ -7,9 +7,6 @@
     header("Pragma: no-cache");
 !!}
 <head>
-        
-
-
 
 
     <title> {{trans('general.App_name')}}</title>
@@ -77,9 +74,15 @@
                         <div class="form-group">
                             <input class="form-control" placeholder="{{trans('general.password')}}" name="password" type="password" required>
                         </div>
+<!-- 
                         <div class="form-group">
-                            <a style="text-decoration: none" href="{!! URL::to('account/create') !!}">{{trans('general.create_account')}}</a>
+                            <input type="checkbox" name="remember" value="1"> {{trans('general.remember_me')}}
                         </div>
+                        -->
+                        <div class="form-group">  <a href="password/email" name="forget_pass"> {{trans('general.forget_pass')}}</a>
+                        </div>
+
+
                         <div class="form-group">
                             <input type="submit" class="btn btn-lg btn-success btn-block" value="{{trans('general.login')}}">
                         </div>

@@ -34,6 +34,7 @@
                             <th>{{trans('general.username')}}</th>
                              <th>{{trans('general.email')}}</th>
                              <th>{{trans('general.org')}}</th>
+
                             <th>{{trans('general.action')}}</th>
                         </tr>
                         </thead>
@@ -43,6 +44,7 @@
                             <td>{!! $user->first_name !!} {!! $user->last_name !!}</td>
                             <td>{!! $user->email !!}</td>
                             <td>{!! $user->org !!}</td>
+
                             <td>
                                 <a class="btn btn-danger delete" ng-click="delete({!! $user->id !!})" ><i class="fa fa-fw fa-trash-o"></i>{{trans('general.delete')}}</a>
                                 <a class="btn btn-primary iframe" href='{!! URL::to("user/user-update/$user->id") !!}'><i class="fa fa-fw fa-edit"></i>{{trans('general.edit')}}</a>

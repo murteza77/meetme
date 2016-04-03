@@ -94,6 +94,15 @@ return [
 'usertype'								=>'نوعیت کاربر',
 'create_user'							=>'ایجاد کاربر',
 'users_table'							=>'جدول کاربران سیستم',
-'user_update'							=>'به روز رسانی کاربر'
+'user_update'							=>'به روز رسانی کاربر',
+'change_pass'							=>'تغییر پسورد',
+'old_pass'								=>'پسورد قدیمی',
+'new_pass'						     	=>'پسورد جدید',
+'confirm_pass'						    =>'تایید پسورد',
+'change'							  	=>'تغییر بده',
+'current_pass'							=>'پسورد فعالی',
+'forget_pass'                            =>'پسوردم را فراموش کرده ام',
+'remember_me'							=>'مرا به یاد داشته باش'
+
 ];
 

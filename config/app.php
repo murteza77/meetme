@@ -165,6 +165,16 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        /*
+     *DynamicCodeNinja/RBAC Service Providers...
+     */
+        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
+        Illuminate\Auth\AuthServiceProvider::class,
+        DCN\RBAC\RBACServiceProvider::class
+
+
+  
+       
 
     ],
 
@@ -214,7 +224,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'		=> Illuminate\Html\FormFacade::class,
-        'HTML'		=> Illuminate\Html\HtmlFacade::class
+        'HTML'		=> Illuminate\Html\HtmlFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 
