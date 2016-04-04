@@ -77,6 +77,14 @@
                             <input class="form-control" placeholder="{{trans('general.org')}}" name="org" type="text"  required @if(Session::has('input.org')) value="{!! Session::get('input.org') !!}" @endif>
                         </div>
                         <div class="form-group">
+                            
+                            <select name="role">
+                            @foreach(DCN\RBAC\Models\Role::all() as $value)
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <input class="form-control" id="password" placeholder="{{trans('general.password')}}" name="password" type="password" required>
                         </div>
                         <div class="form-group">

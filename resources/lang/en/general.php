@@ -99,7 +99,8 @@ return [
 'confirm_pass'						    =>'Confirm Password',
 'change'							  	=>'Change',
 'forget_pass'                            =>'Forget Password',
-'remember_me'							=>'Remember Me'
+'remember_me'							=>'Remember Me',
+'user_role'								=>'User Role'
 
 
 

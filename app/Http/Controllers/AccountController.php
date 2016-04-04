@@ -83,6 +83,8 @@ class AccountController extends Controller
                 $user->password = Hash::make(Input::get('password'));
                 $user->save();
 
+                $user->roles()->sync([Input::get('role')]);
+
                return redirect()->intended('user');
                 /*$credentials = array(
                     'email' => Request::input('email'),
