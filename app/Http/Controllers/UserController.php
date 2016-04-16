@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Input;
 use App\Http\Controllers\Controller;
 //use Symfony\Component\Security\Core\User\User;
 use App\User;
+use App\orgs;
 use Illuminate\Support\Facades\Hash;
+use DCN\RBAC\Models\Role;
+
 
 
 
@@ -22,10 +25,16 @@ class UserController extends Controller
 {
    public function __construct()
     {
-        $this->middleware('permission:read.user',   ['only' => ['getIndex',]]);
-        $this->middleware('permission:create.user', ['only' => ['anyCreate',]]);
-        $this->middleware('permission:edit.user',   ['only' => ['anyUserUpdate','anyUpdateInfo',]]);
-        $this->middleware('permission:delete.user', ['only' => ['getTrashUser',]]);
+        $this->middleware('permission:read.user',   ['only' => ['getIndex']]);
+
+
+        // Currently the anycreateUser method doesn't work on the create.user so i added to the edit.user
+       // $this->middleware('permission:create.user', ['only' => ['anyCreateUser']]);  
+
+                
+        $this->middleware('permission:edit.user',   ['only' => ['anyUserUpdate','anyCreateUser']]);
+       // $this->middleware('permission:edit.user',   ['only' => ['anyCreateUser',]]);
+      //  $this->middleware('permission:delete.user', ['only' => ['getTrashUser',]]);
 
     }
 
@@ -593,14 +602,17 @@ class UserController extends Controller
         $data['users'] = User::all();
 
         return view('User.admin',$data);
+       
     }
 
-  
+    
+    
 
    public function anyCreateUser()
     {
 
             $data['menu'] = 'Create User';
+
             return view('User.createuser', $data);
         
     }
@@ -608,9 +620,11 @@ class UserController extends Controller
 
  public function getTrashUser()
     {
-        $event = USer::find(Input::get('id'));
-        $event->delete();
-        return 'true';
+        $user = User::find(Input::get('id'));;
+        $user->delete();
+         return 'true';
+
+       
     }
       public function getTableUser()
     {
@@ -652,7 +666,7 @@ class UserController extends Controller
 
                 Session::flash('success', 'User Update Successfully');
 
-               // return view('User.dashboard');
+                 return redirect()->intended('user/admin');
                 }
                 
         }
@@ -717,6 +731,97 @@ class UserController extends Controller
         }
         return 'true';
     }
+
+
+
+// Organization CRUD Start Here
+
+
+
+    public function getOrganize()
+    {
+        $data['menu'] = 'organize';
+
+        $data['orgsdata'] = orgs::all();
+
+        return view('User.orgAdmin',$data);
+    }
+
+
+    public function anyOrgUpdate($id = null)
+    {
+
+
+
+        if (Input::all()) {
+           // dd('test ok');
+            $rules = array(
+                'name'    =>'required',
+                'about' => 'required',
+                'location' => "required",
+                'phone' => "required",
+                );
+
+
+         /* Laravel Validator Rules Apply */
+            $validator = Validator::make(Input::all(), $rules);
+            //dd($validator);
+                if ($validator->fails())
+                    return $validator->messages()->first();
+                else
+                {
+
+                $org = orgs::find(Input::get('id'));
+                $org->name =    Input::get('name');
+                $org->about =    Input::get('about');
+                $org->location =    Input::get('location');
+                $org->phone =    Input::get('phone');
+            
+                $org->save();
+
+                Session::flash('success', 'Organization Update Successfully');
+
+         return redirect()->intended('user/organize');
+                }
+                
+        }
+
+        $data['org'] = orgs::find($id);
+                $data['menu'] = 'Table';
+                    return view('User.orgUpdate', $data);
+    }
+
+
+    public function getTrashOrg()
+    {
+        $org = orgs::find(Input::get('id'));;
+        $org->delete();
+         return 'true';
+
+       
+    }
+      public function getTableOrg()
+    {
+        $data['menu'] = 'Table';
+        $data['org'] = Orgs::orderBy('id', 'desc')->paginate(500);
+        return view('User.tableOrg', $data);
+    }
+
+
+
+   public function anyCreateOrg()
+    {
+
+            $data['menu'] = 'Create Org';
+
+            return view('User.createorg', $data);
+        
+    }
+
+
+
+
+
 
 
 }

@@ -639,12 +639,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "61e1f860a304c3fb6961ecbec36927b5f20b71c6"
+                "reference": "3df22ccdf20a68fafe34cb1ae452aee7cde7d442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/61e1f860a304c3fb6961ecbec36927b5f20b71c6",
-                "reference": "61e1f860a304c3fb6961ecbec36927b5f20b71c6",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/3df22ccdf20a68fafe34cb1ae452aee7cde7d442",
+                "reference": "3df22ccdf20a68fafe34cb1ae452aee7cde7d442",
                 "shasum": ""
             },
             "require": {
@@ -702,7 +702,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2016-02-19 14:48:59"
+            "time": "2016-04-03 03:13:05"
         },
         {
             "name": "doctrine/inflector",
@@ -1189,16 +1189,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.31",
+            "version": "v5.1.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d899fbda59bf3ffcde11a9b443c01043b76f40b3"
+                "reference": "0e73cba565b0ef5b158da62f641dc6770b806102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d899fbda59bf3ffcde11a9b443c01043b76f40b3",
-                "reference": "d899fbda59bf3ffcde11a9b443c01043b76f40b3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/0e73cba565b0ef5b158da62f641dc6770b806102",
+                "reference": "0e73cba565b0ef5b158da62f641dc6770b806102",
                 "shasum": ""
             },
             "require": {
@@ -1212,7 +1212,7 @@
                 "monolog/monolog": "~1.11",
                 "mtdowling/cron-expression": "~1.0",
                 "nesbot/carbon": "~1.19",
-                "paragonie/random_compat": "~1.1",
+                "paragonie/random_compat": "~1.4",
                 "php": ">=5.5.9",
                 "psy/psysh": "0.7.*",
                 "swiftmailer/swiftmailer": "~5.1",
@@ -1313,7 +1313,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-02-24 15:13:21"
+            "time": "2016-04-07 14:12:37"
         },
         {
             "name": "league/flysystem",
@@ -1461,16 +1461,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "1.18.1",
+            "version": "1.18.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "a5f2734e8c16f3aa21b3da09715d10e15b4d2d45"
+                "reference": "064b38c16790249488e7a8b987acf1c9d7383c09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/a5f2734e8c16f3aa21b3da09715d10e15b4d2d45",
-                "reference": "a5f2734e8c16f3aa21b3da09715d10e15b4d2d45",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/064b38c16790249488e7a8b987acf1c9d7383c09",
+                "reference": "064b38c16790249488e7a8b987acf1c9d7383c09",
                 "shasum": ""
             },
             "require": {
@@ -1485,13 +1485,13 @@
                 "doctrine/couchdb": "~1.0@dev",
                 "graylog2/gelf-php": "~1.0",
                 "jakub-onderka/php-parallel-lint": "0.9",
+                "php-amqplib/php-amqplib": "~2.4",
                 "php-console/php-console": "^3.1.3",
                 "phpunit/phpunit": "~4.5",
                 "phpunit/phpunit-mock-objects": "2.3.0",
                 "raven/raven": "^0.13",
                 "ruflin/elastica": ">=0.90 <3.0",
-                "swiftmailer/swiftmailer": "~5.3",
-                "videlalvaro/php-amqplib": "~2.4"
+                "swiftmailer/swiftmailer": "~5.3"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -1500,11 +1500,11 @@
                 "ext-mongo": "Allow sending log messages to a MongoDB server",
                 "graylog2/gelf-php": "Allow sending log messages to a GrayLog2 server",
                 "mongodb/mongodb": "Allow sending log messages to a MongoDB server via PHP Driver",
+                "php-amqplib/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib",
                 "php-console/php-console": "Allow sending log messages to Google Chrome",
                 "raven/raven": "Allow sending log messages to a Sentry server",
                 "rollbar/rollbar": "Allow sending log messages to Rollbar",
-                "ruflin/elastica": "Allow sending log messages to an Elastic Search server",
-                "videlalvaro/php-amqplib": "Allow sending log messages to an AMQP server using php-amqplib"
+                "ruflin/elastica": "Allow sending log messages to an Elastic Search server"
             },
             "type": "library",
             "extra": {
@@ -1535,7 +1535,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2016-03-13 16:08:35"
+            "time": "2016-04-02 13:12:58"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -2036,16 +2036,16 @@
         },
         {
             "name": "symfony/class-loader",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/class-loader.git",
-                "reference": "92e7cf1af2bc1695daabb4ac972db169606e9030"
+                "reference": "cbb7e6a9c0213a0cffa5d9065ee8214ca4e83877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/class-loader/zipball/92e7cf1af2bc1695daabb4ac972db169606e9030",
-                "reference": "92e7cf1af2bc1695daabb4ac972db169606e9030",
+                "url": "https://api.github.com/repos/symfony/class-loader/zipball/cbb7e6a9c0213a0cffa5d9065ee8214ca4e83877",
+                "reference": "cbb7e6a9c0213a0cffa5d9065ee8214ca4e83877",
                 "shasum": ""
             },
             "require": {
@@ -2088,7 +2088,7 @@
             ],
             "description": "Symfony ClassLoader Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-03 09:33:23"
+            "time": "2016-03-30 10:41:14"
         },
         {
             "name": "symfony/console",
@@ -4196,16 +4196,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c"
+                "reference": "0047c8366744a16de7516622c5b7355336afae96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/b5ba64cd67ecd6887f63868fa781ca094bd1377c",
-                "reference": "b5ba64cd67ecd6887f63868fa781ca094bd1377c",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0047c8366744a16de7516622c5b7355336afae96",
+                "reference": "0047c8366744a16de7516622c5b7355336afae96",
                 "shasum": ""
             },
             "require": {
@@ -4241,7 +4241,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-23 15:16:06"
+            "time": "2016-03-04 07:55:57"
         }
     ],
     "aliases": [],

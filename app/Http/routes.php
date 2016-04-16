@@ -23,9 +23,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::controller('user','UserController');
 });
 
-Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
-Route::get('user/update-info', ['as'=>'updateinfo', 'uses'=>'UserController@updateinforedirect']);
 
 
 

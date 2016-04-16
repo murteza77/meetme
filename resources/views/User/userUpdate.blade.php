@@ -15,6 +15,7 @@
         </div>
     </div>
 
+
     <div class="row" ng-app="user" ng-controller="userDeleteController">
         <div class="col-lg-12">
             <div class="panel panel-default">
@@ -51,15 +52,18 @@
                                    style="width: 60%">
                         </div>
                     </div>
-                     <div class="form-group">
-                        <label for="org" class="col-sm-2 control-label">{{trans('general.org')}}</label>
+                     
 
-                        <div class="col-sm-10">
-                            <input type="text"  class="form-control " name="org" required
-                                    value="{!! $user->org !!}"
-                                   style="width: 60%">
+                    <div class="form-group">
+                             <label for="org" class="col-sm-2 control-label">{{trans('general.org')}}</label> 
+                            <select name="org">
+                            @foreach(App\orgs::all() as $value)
+                                <option value="{{$value->name}}">{{$value->name}}</option>
+                            @endforeach
+                            </select>
                         </div>
-                    </div>
+
+
                     <div class="form-group">
                         <label for="pass" class="col-sm-2 control-label">{{trans('general.password')}}</label>
 

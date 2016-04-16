@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-trait ResetsPasswords 
+trait ResetsPasswords
 {
     use RedirectsUsers;
 

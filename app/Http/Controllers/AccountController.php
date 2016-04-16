@@ -4,6 +4,7 @@ use App\Company;
 use App\Schedule;
 use App\ScheduleReminder;
 use App\User;
+use App\orgs;
 use Auth;
 use Request;
 use Session;
@@ -20,6 +21,8 @@ class AccountController extends Controller
         public function __Construct()
         {
             $this->middleware('permission:create.user', ['only' => ['anyCreate',]]);
+
+
         }
 
     /**
@@ -101,6 +104,42 @@ class AccountController extends Controller
         }
     }
 
+public function anyCreateorg()
+    {
+        
+         if (Input::all()) {
+            $rules = array(
+                'name' => 'required',
+                'about' => 'required',
+                'location' => "required",
+                'phone' => "required",
+//                'phone' => 'required|phone_number',
+                
+            );
+        ;
+            /* Laravel Validator Rules Apply */
+            $validator = Validator::make(Input::all(), $rules);
+            if ($validator->fails()):
+                $validationError = $validator->messages()->first();
+
+                Session::flash('error', $validationError);
+
+                return Redirect::back()->with('input', Input::all());
+            else:
+                $org = new orgs();
+                $org->name = Input::get('name');
+                $org->about = Input::get('about');
+                $org->location = Input::get('location');
+                $org->phone = Input::get('phone');
+    
+                $org->save();
+
+               return redirect()->intended('user/organize');
+             
+            endif;
+        } 
+    }
+    
     /**
      *
      */

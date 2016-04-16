@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title><?php echo e(trans('general.system_title')); ?></title>
+
+    <?php echo HTML::script('js/jquery-2.0.3.min.js'); ?>
+
+    <!-- Bootstrap Core CSS -->
+    <?php echo HTML::style('css/bootstrap.min.css'); ?>
+
+ <?php echo (isRTL())?
+             HTML::style('css/bootstrap-rtl.min.css') :
+             HTML::style('css/bootstrap.min.css'); ?>
+
+    <!-- Custom CSS -->
+    <?php echo HTML::style('css/sb-admin-2.css'); ?>
+
+
+    <!-- Custom Fonts -->
+    <?php echo HTML::style('font-awesome/css/font-awesome.min.css'); ?>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        $(function(){
+            $(".input").bind("keyup blur",function() {
+                var $th = $(this);
+                $th.val( $th.val().replace(/[^A-z0-9,. _-]/g, function(str) { return ''; } ) );
+            });
+        })
+        $(function(){
+            $(".number").bind("keyup blur",function() {
+                var $th = $(this);
+                $th.val( $th.val().replace(/[^0-9-.]/g, function(str) { return ''; } ) );
+            });
+        })
+    </script>
+
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+        <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <?php if(Session::has('error')): ?>
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <i class="fa fa-info-circle"></i> <?php echo Session::get('error'); ?>
+
+                    </div>
+                <?php endif; ?>
+                <div class="panel-heading">
+                    <h3 class="panel-title"><?php echo trans('general.create_account'); ?></h3>
+                </div>
+                <div class="panel-body">
+                    <?php echo Form::open(array('accept-charset' => 'utf-8', 'role' => 'form', 'url' => 'account/create')); ?>
+
+                    <fieldset>
+                        <div class="form-group">
+                            <input class="form-control " placeholder="<?php echo e(trans('general.first_name')); ?>" name="first_name" type="text" autofocus required <?php if(Session::has('input.first_name')): ?> value="<?php echo Session::get('input.first_name'); ?>" <?php endif; ?>>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control " placeholder="<?php echo e(trans('general.last_name')); ?>" name="last_name" type="text" required <?php if(Session::has('input.last_name')): ?> value="<?php echo Session::get('input.last_name'); ?>" <?php endif; ?>>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="<?php echo e(trans('general.email')); ?>" name="email" type="email"  required <?php if(Session::has('input.email')): ?> value="<?php echo Session::get('input.email'); ?>" <?php endif; ?>>
+                        </div>
+                         <div class="form-group">
+                            <input class="form-control" placeholder="<?php echo e(trans('general.org')); ?>" name="org" type="text"  required <?php if(Session::has('input.org')): ?> value="<?php echo Session::get('input.org'); ?>" <?php endif; ?>>
+                        </div>
+                        <div class="form-group">
+                            
+                            <select name="role">
+                            <?php foreach(DCN\RBAC\Models\Role::all() as $value): ?>
+                                <option value="<?php echo e($value->id); ?>"><?php echo e($value->name); ?></option>
+                            <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="password" placeholder="<?php echo e(trans('general.password')); ?>" name="password" type="password" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" id="confirm_password" placeholder="<?php echo e(trans('general.confirm_password')); ?>" name="confirm_password" type="password" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control number" placeholder="<?php echo e(trans('general.phone')); ?>" name="phone" type="text" required <?php if(Session::has('input.phone')): ?> value="<?php echo Session::get('input.phone'); ?>" <?php endif; ?>>
+                        </div>
+                        <!-- <div class="form-group">
+                           <?php echo e(trans('general.already_account')); ?> <a style="text-decoration: none" href="<?php echo URL::to('/'); ?>"><?php echo e(trans('general.login')); ?></a>
+                        </div> -->
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-fw fa-plus"></i><?php echo e(trans('general.create')); ?></button>
+                        </div>
+                    </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Core JavaScript -->
+<?php echo HTML::script('js/bootstrap.min.js'); ?>
+
+
+<!-- Custom Theme JavaScript -->
+<?php echo HTML::script('js/sb-admin-2.js'); ?>
+
+
+</body>
+
+</html>

@@ -27,13 +27,13 @@
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">{{trans('general.start_time')}}</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control from" name="start" required placeholder="{{trans('general.start_time')}}" style="width: 60%">
+                            <input type="text"  class="form-control from" name="start" required placeholder="{{trans('general.start_time')}}" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">{{trans('general.end_time')}}</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control to" name="end" required placeholder="{{trans('general.end_time')}}" style="width: 60%">
+                            <input type="text"   class="form-control to" name="end" required placeholder="{{trans('general.end_time')}}" style="width: 60%">
                         </div>
                     </div>
                     <div class="form-group">

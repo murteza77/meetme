@@ -45,7 +45,7 @@
                             <td>{!! $user->org !!}</td>
                             <td>
                                 <a class="btn btn-danger delete" ng-click="delete({!! $user->id !!})" ><i class="fa fa-fw fa-trash-o"></i>{{trans('general.delete')}}</a>
-                                <a class="btn btn-primary iframe" href='{!! URL::to("user/user-update/$user->id") !!}'><i class="fa fa-fw fa-edit"></i>{{trans('general.edit')}}</a>
+                                <a class="btn btn-primary iframe" href='{!! URL::to("user/table-user/$user->id") !!}'><i class="fa fa-fw fa-edit"></i>{{trans('general.edit')}}</a>
                             </td>
                         </tr>
                             @endforeach
@@ -74,7 +74,7 @@
                     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                     params: { id: id }
                 };
-                var chk = confirm("Are you sure to trash this?");
+                var chk = confirm("Are you sure to trash this user?");
                 if (chk) {
                     $http(req).success(function (response) {
                         $.pnotify.defaults.styling = "bootstrap3";

@@ -1,13 +1,12 @@
 @extends('User.layout')
 @section('content')
 
-
     <div class="row">
         <div class="col-lg-12">
           
             <ol class="breadcrumb">
                 <li class="active">
-                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> {{trans('general.dashbord')}}</a> /
+                    <a style="text-decoration: none" href="{!! URL::to('/') !!}"> {{trans('general.dashbord')}}</a>
                     <a style="text-decoration: none" href="{!! URL::to('user/table-event') !!}">{{trans('general.event_table')}}</a>
                 </li>
             </ol>

@@ -203,10 +203,14 @@
                         <a class="@if($menu == 'admin') active @endif" href="{!! URL::to('user/admin') !!}"><i
                                     class="fa fa-fw fa-trash-o"></i> {{ trans('general.admin') }}</a>
                     </li>
+                      <li>
+                        <a class="@if($menu == 'organize') active @endif" href="{!! URL::to('user/organize') !!}"><i
+                                    class="fa fa-fw fa-trash-o"></i> {{ trans('general.org_admin') }}</a>
+                    </li>
              
          @endrole     
                      <li>
-                        <a class="@if($menu == 'Table2') active @endif" href="{!! URL::to('user/table-user') !!}"><i
+                        <a class="@if($menu == 'Table2') active @endif" href="{!! URL::to('user/table-event') !!}"><i
                                     class="fa fa-fw fa-table"></i> {{ trans('general.event_table') }}</a>
                     </li>
 

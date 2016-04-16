@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-
 <head>
     <title>{{trans('general.system_title')}}</title>
 
@@ -38,9 +37,7 @@
             });
         })
     </script>
-   
 
-    
 
 </head>
 
@@ -73,10 +70,25 @@
                         <div class="form-group">
                             <input class="form-control" placeholder="{{trans('general.email')}}" name="email" type="email"  required @if(Session::has('input.email')) value="{!! Session::get('input.email') !!}" @endif>
                         </div>
-                         <div class="form-group">
+                        <div class="form-group">
+                            
+                            <select name="org">
+                            @foreach(App\orgs::all() as $value)
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                       <!--   <div class="form-group">
                             <input class="form-control" placeholder="{{trans('general.org')}}" name="org" type="text"  required @if(Session::has('input.org')) value="{!! Session::get('input.org') !!}" @endif>
+                        </div> -->
+                       
+                        <div class="form-group">
+                            <input class="form-control" id="password" placeholder="{{trans('general.password')}}" name="password" type="password" required>
                         </div>
                         <div class="form-group">
+                            <input class="form-control" id="confirm_password" placeholder="{{trans('general.confirm_password')}}" name="confirm_password" type="password" required>
+                        </div>
+                         <div class="form-group">
                             
                             <select name="role">
                             @foreach(DCN\RBAC\Models\Role::all() as $value)
@@ -85,17 +97,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input class="form-control" id="password" placeholder="{{trans('general.password')}}" name="password" type="password" required>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" id="confirm_password" placeholder="{{trans('general.confirm_password')}}" name="confirm_password" type="password" required>
-                        </div>
-                        <div class="form-group">
                             <input class="form-control number" placeholder="{{trans('general.phone')}}" name="phone" type="text" required @if(Session::has('input.phone')) value="{!! Session::get('input.phone') !!}" @endif>
                         </div>
                         <!-- <div class="form-group">
                            {{ trans('general.already_account')}} <a style="text-decoration: none" href="{!! URL::to('/') !!}">{{trans('general.login')}}</a>
                         </div> -->
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-fw fa-plus"></i>{{trans('general.create')}}</button>
                         </div>
@@ -114,5 +121,4 @@
 {!! HTML::script('js/sb-admin-2.js') !!}
 
 </body>
-
 </html>

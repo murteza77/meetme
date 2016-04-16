@@ -1,0 +1,103 @@
+<?php $__env->startSection('content'); ?>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">
+               <?php echo e(trans('general.user_update')); ?>
+
+            </h2>
+            <ol class="breadcrumb">
+                <li class="active">
+                    <a style="text-decoration: none" href="<?php echo URL::to('/'); ?>"> <?php echo e(trans('general.dashbord')); ?></a> /
+                    <a style="text-decoration: none" href="<?php echo URL::to('user/table-user'); ?>"> <?php echo e(trans('general.user_update')); ?></a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row" ng-app="user" ng-controller="userDeleteController">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-edit fa-fw"></i> <?php echo e(trans('general.user_update')); ?></h3>
+                </div>
+                <div class="panel-body">
+                    <?php echo Form::open(array('id' => 'user', 'accept-charset' => 'utf-8', 'class' => 'form-horizontal',  'ng-submit'=>'update($user)')); ?>
+
+                    
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label"><?php echo e(trans('general.title')); ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control " name="first_name" id="inputEmail3" required
+                                   placeholder="<?php echo e(trans('general.first_name')); ?>" value="<?php echo $user->first_name; ?>" style="width: 60%">
+                            <input type="hidden" name="id" value="<?php echo $user->id; ?>">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="last_name" class="col-sm-2 control-label"><?php echo e(trans('general.last_name')); ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control "  name="last_name" required
+                                
+                                   value="<?php echo $user->last_name; ?>" style="width: 60%">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label"><?php echo e(trans('general.email')); ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control "  name="email" required
+                                   value="<?php echo $user->email; ?>"
+                                   style="width: 60%">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="org" class="col-sm-2 control-label"><?php echo e(trans('general.org')); ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control " name="org" required
+                                    value="<?php echo $user->org; ?>"
+                                   style="width: 60%">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass" class="col-sm-2 control-label"><?php echo e(trans('general.password')); ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="password"  class="form-control " name="pass" required
+                                   value="<?php echo $user->password; ?>"
+                                   style="width: 60%">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label for="phone" class="col-sm-2 control-label"><?php echo e(trans('general.phone')); ?></label>
+
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control "  name="phone" required
+                                   value="<?php echo $user->phone; ?>"
+                                   style="width: 60%">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-fw fa-edit"></i> <?php echo e(trans('general.update')); ?>
+
+                            </button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('asset'); ?>
+  
+   
+   
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('User.layout', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

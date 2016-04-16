@@ -218,7 +218,7 @@
              
          <?php endif; ?>     
                      <li>
-                        <a class="<?php if($menu == 'Table2'): ?> active <?php endif; ?>" href="<?php echo URL::to('user/table-user'); ?>"><i
+                        <a class="<?php if($menu == 'Table2'): ?> active <?php endif; ?>" href="<?php echo URL::to('user/table-event'); ?>"><i
                                     class="fa fa-fw fa-table"></i> <?php echo e(trans('general.event_table')); ?></a>
                     </li>
 
